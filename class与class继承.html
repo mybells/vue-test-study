@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    class A{
+      constructor(){
+        this.a='a'
+        this.name=(x,y)=>{
+          this.d="d"
+          console.log(x,y)
+        }
+      }
+      name1() {
+        this.b='b'
+        return this.d
+      };
+      static c='c'
+    };
+
+    console.log(new A())
+    // a: "a"
+    // name: (x,y)=> {…}
+    // __proto__: 
+    //   constructor: class A
+    //   name1: ƒ name1()
+    //   __proto__: Object
+
+    console.log(A.prototype)
+    // constructor: class A
+    // name1: ƒ name1()
+    // __proto__: Object
+
+    console.log(A.__proto__)
+    // ƒ () { [native code] }
+
+
+    class B extends A{
+      constructor(){
+        super();
+        this.x2="x2"
+      }
+      name3() {
+        this.i2='i2'
+      };
+      static v2='v2'
+      s2='s2'
+    }
+
+    console.log(new B())
+    // a: "a"
+    // name: (x,y)=> {…}
+    // s2: "s2"
+    // x2: "x2"
+    // __proto__: A
+    //   constructor: class B
+    //   name3: ƒ name3()
+    //   __proto__:
+    //     constructor: class A
+    //     name1: ƒ name1()
+    //     __proto__: Object
+
+    console.log(B.prototype)
+    // constructor: class B
+    // name3: ƒ name3()
+    // __proto__:
+    //   constructor: class A
+    //   name1: ƒ name1()
+    //   __proto__: Object
+
+    console.log(B.__proto__)
+    //class A{...}
+
+    // 上面代码中,子类B的__proto__属性指向父类A,子类B的prototype属性的__proto__属性指向父类A的prototype属性
+    // B.__proto__===A //true
+    // B.prototype.__proto__===A.prototype //true
+    // 这两条继承链可以这样理解：作为一个对象，子类B的原型（__proto__属性）是父类A;
+    // 作为一个构造函数，子类B的原型（prototype属性）是父类的实例。
+  </script>
+</body>
+</html>
