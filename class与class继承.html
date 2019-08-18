@@ -9,12 +9,15 @@
 <body>
   <script>
     class A{
+      x='x'//相当于this.x='x'
       constructor(){
+        console.log(this.x)//x
         this.a='a'
         this.name=(x,y)=>{
           this.d="d"
           console.log(x,y)
         }
+        // x='a'//Uncaught ReferenceError: x is not defined
       }
       name1() {
         this.b='b'
