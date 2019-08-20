@@ -1,18 +1,21 @@
 <template>
   <div>
-    <directive></directive>
+    <!-- <directive></directive> -->
+    <vuedata></vuedata>
   </div>
 </template>
 
 <script>
   import directive from './vue指令.vue'
+  import vuedata from './vueWatch与data.vue'
   export default {
     data() {
       return {
       }
     },
     components:{
-      directive
+      directive,
+      vuedata
     }
   }
 </script>
