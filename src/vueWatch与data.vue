@@ -19,7 +19,6 @@
       arr:[//会按照数组下标顺序执行
         'watchmethod',//watchmethod
         function handler2(val, oldVal) {//再执行handler2
-          debugger;
         },
         {//最后执行handler3
           handler: function handler3 (val, oldVal) { /* ... */ },
@@ -28,7 +27,6 @@
       ]
     },
     created() {
-      debugger;
       let a=this._a//undefined
       let b=this.$data._a//a
       this.arr.push(4)
