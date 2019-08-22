@@ -21,8 +21,7 @@
       vuedata
     },
     created() {
-      debugger;
-      this.$sss('abc')
+      // this.$sss('abc')//npm中的方法
     },
     mounted() {
       this.$children[0].b="bbb"//组件中b变为bbb，两秒后变为123

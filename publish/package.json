@@ -1,0 +1,9 @@
+{
+  "name": "mybellss",
+  "version": "1.0.1",
+  "description": "测试",
+  "main": "bundle.js",
+  "scripts": {},
+  "author": "mybells",
+  "license": "ISC"
+}

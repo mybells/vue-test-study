@@ -1,14 +1,20 @@
 const path=require('path')
 const HtmlWebpackPlugin=require('html-webpack-plugin')
-const {CleanWebpackPlugin}=require('clean-webpack-plugin')
+// const {CleanWebpackPlugin}=require('clean-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports={
   mode:'development',
+  // mode:'production',
   entry:'./src/main.js',
   output:{
     filename:'bundle.js',
-    path:path.resolve(__dirname,'dist')
+    path:path.resolve(__dirname,'dist'),
+    library: "mybells",//library就是webpack打包内容的名字
+    libraryTarget: "umd"//libraryTarget就是配置webpack打包内容的模块方式的参数
+    // commonjs/commonjs2: 将你的library暴露为CommonJS模块
+    // amd: 将你的library暴露为amd模块
+    // umd: 将你的library暴露为所有的模块定义下都可运行的方式
   },
   // externals: {
   //   vue: 'Vue',
@@ -63,7 +69,7 @@ module.exports={
   },
   plugins:[
     new VueLoaderPlugin(),
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),

@@ -3576,10 +3576,10 @@ multicast-dns@^6.0.1:
     dns-packet "^1.3.1"
     thunky "^1.0.2"
 
-mybells@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/mybells/-/mybells-1.0.0.tgz#5a6e917bd8226663680acef1edb558b4999a4791"
-  integrity sha512-w5QFjGyTtoC1RIZQQ2ycG0bY6lAPwf6OlQnFDX5ZyMGSAxEJ2kxfk4EmouxpxEca6aNr4eN/WPi64+26m49wkw==
+mybellss@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/mybellss/-/mybellss-1.0.1.tgz#c6ea63bc923403faf4ebc5c2a3531c8c16ba696f"
+  integrity sha512-13XX9oQ67twefDMVjPDbo3IX8oaTxPmE5Im9KdYSPLSezydTRNQDDq2MiKd0T4Nq982s9TiZLgfTVRDv6u2vCQ==
 
 nan@^2.12.1:
   version "2.14.0"
