@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- <directive></directive> -->
-    <vuedata></vuedata>
+    <vuedata ref="vuedata"></vuedata>
   </div>
 </template>
 
@@ -11,12 +11,28 @@
   export default {
     data() {
       return {
+        ss:''
       }
     },
     components:{
       directive,
       vuedata
-    }
+    },
+    created() {
+      
+    },
+    mounted() {
+      this.$children[0].b="bbb"//组件中b变为bbb，两秒后变为123
+      setTimeout(() => {
+        this.$refs.vuedata.b=123
+      }, 2000);
+      this.$emit('test', 'hi')
+    },
+    methods: {
+      sd(){
+        console.log(this.ss)
+      }
+    },
   }
 </script>
 

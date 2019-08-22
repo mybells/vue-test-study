@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{b}}
   </div>
 </template>
 
@@ -8,6 +9,7 @@
     data() {
       return {
         _a:'a',
+        b:'b',
         arr:[1,2,3]
       }
     },
@@ -30,6 +32,11 @@
       let a=this._a//undefined
       let b=this.$data._a//a
       this.arr.push(4)
+    },
+    mounted() {
+      this.$parent.$on('test', function (msg) {
+        console.log(msg)
+      })
     },
     methods: {
       watchmethod(val,oldval){
