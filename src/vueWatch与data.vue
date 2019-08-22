@@ -6,6 +6,7 @@
 
 <script>
   export default {
+    props:['ss'],
     data() {
       return {
         _a:'a',
