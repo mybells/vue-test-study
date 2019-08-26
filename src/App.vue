@@ -4,12 +4,14 @@
     {{ss|filterss}}
     {{ss}}
     <vuedata ref="vuedata" :ss="ss|filterss"></vuedata>
+    <vuex></vuex>
   </div>
 </template>
 
 <script>
   import directive from './vue指令.vue'
   import vuedata from './vueWatch与data.vue'
+  import vuex from './vuex.vue'
   export default {
     data() {
       return {
@@ -18,7 +20,8 @@
     },
     components:{
       directive,
-      vuedata
+      vuedata,
+      vuex
     },
     created() {
       // this.$sss('abc')//npm中的方法
