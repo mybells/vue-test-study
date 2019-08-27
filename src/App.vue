@@ -3,6 +3,7 @@
     <!-- <directive></directive> -->
     {{ss|filterss}}
     {{ss}}
+    <com></com>
     <vuedata ref="vuedata" :ss="ss|filterss"></vuedata>
     <vuex></vuex>
   </div>
@@ -12,6 +13,7 @@
   import directive from './vue指令.vue'
   import vuedata from './vueWatch与data.vue'
   import vuex from './vuex.vue'
+  // import com from './import动态组件.vue'
   export default {
     data() {
       return {
@@ -21,6 +23,9 @@
     components:{
       directive,
       vuedata,
+      // com:(resolve)=>require(['./import动态组件.vue'],resolve),
+      com:() => import('./import动态组件.vue'),
+      // com,
       vuex
     },
     created() {
