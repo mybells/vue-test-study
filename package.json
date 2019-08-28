@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack",
-    "serve": "webpack-dev-server --open"
+    "serve": "webpack-dev-server --open",
+    "build": "webpack ./src/htmlImport/import与require.js --output-path='./src/htmlImport/dist'"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

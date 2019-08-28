@@ -57,7 +57,7 @@ export {default as d1} from './moudle2'
 //https://www.jb51.net/article/124442.htm
 let v=import('./moudle2');
 console.log(v);//Promise {<pending>}
-
+console.log('moudlestart')
 import('./moudle2').then(val=>{
   console.log(val);
   // Module {
@@ -72,7 +72,7 @@ import('./moudle2').then(val=>{
   //   __esModule: true
   // }
 })
-
+console.log('moudleend')
 Promise.all([import('./moudle2'),import('./moudle1')]).then(res=>{
   console.log(res)
   // (2) [Module, Module]
