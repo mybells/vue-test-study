@@ -11,7 +11,7 @@
   <script>
     // 深拷贝是指目标对象不会随源对象改变而改变
     // 浅拷贝是指目标对象会随着源对象改变而改变
-    // 下面分别测试Object.assign(),lodash中cloneDeep,slice,concat,[...],JSON.parse(JSON.stringify),js
+    // 下面分别测试Object.assign(),lodash中cloneDeep,slice,concat,[...],JSON.parse(JSON.stringify),js方法,Array.from()
 
 
     /* 构建对象函数 */
@@ -286,6 +286,33 @@
     //{a:'a',b:{c:'c'}}  __proto__:{x: "x",y: {z: "z"}},
     //{a:'aa',b:{c:'cc'}}  __proto__:{x: "xx",y: {z: "zz"}}
 
+
+//12.Array.from()
+    var arr=createObj([1,2,{a:'a',b:{c:'c'}}],[3,4,{x:'x',y:{z:'z'}}])
+    var obj=createObj({a:'a',b:{c:'c'}},{x:'x',y:{z:'z'}})
+    //Array.from()是ES6中语法，只能用于js集合(如: 数组、类数组对象(就是键是数组下标，并有length属性，类似{0:1,1:'x',length:2}这样的)、或者是字符串、map 、set 等可迭代对象)，所以对于obj是无法使用的。
+    copy23=Array.from(obj);//[]
+    copy24=Array.from(arr);//[1,2,{a:'a',b:{c:'c'}}] 没有拷贝原型
+    copy24[0]='11'
+    copy24[2].a="aa"
+    copy24[2].b.c="cc"
+    console.log(arr,copy24)//arr上原型不变
+    //[1,2,{a:'a',b:{c:'c'}}],[11,2,{a:'aa',b:{c:'cc'}}]
+
+    //也可以使用Array.from()实现js集合的深拷贝,包含对象的只能是浅拷贝
+    function recursiveClone(val) {
+      return Array.isArray(val) ? Array.from(val, recursiveClone) : val;
+    }
+    var arr=[1,2,[3,4,[5,6]]]
+    copy25=Array.from(arr, recursiveClone)
+    copy25[0]=11
+    copy25[2][1]=33
+    copy25[2][2][1]=55
+    console.log(arr,copy25)
+    //[1,2,[3,4,[5,6]]],[11,2,[32,4,[55,6]]]
+    //这种是利用递归，把拷贝嵌套的每一级然后返回
+
+    //总结：和Object.assign，slice，concat作用是一样的，只有类数组可以用，二级对象及以后为浅拷贝，一级对象为深拷贝
 
 
     // 总结:
