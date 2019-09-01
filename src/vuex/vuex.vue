@@ -1,15 +1,20 @@
 <template>
   <div>
-    {{key}}
+    //////////** vuex **///////////
+    vuex:{{key}}
+    count:{{count}}
+    <el-button type="primary" @click="setkey">mutation</el-button>
+    <el-button type="primary" @click="setkey2">action</el-button>
   </div>
 </template>
 
 <script>
-import {store} from './store.js';
+import store from './store.js';
 // import mapMutations from 'Vuex';
   export default {
     data() {
       return {
+        // key:store.state.key
         key:0
       }
     },
@@ -29,10 +34,23 @@ import {store} from './store.js';
       }
       console.log(x()[0])//1
     },
+    watch: {
+      '$store.state.key':function(x,y){
+        console.log(x,y)
+      }
+    },
     computed: {
-      // key(){
-      //   return this.$store.state.key
-      // }
+      count(){
+        return this.$store.state.count
+      }
+    },
+    methods: {
+      setkey(){
+        this.$store.commit('updateCount')
+      },
+      setkey2(){
+        this.$store.dispatch('asyncUpdateCount',1)
+      }
     },
   }
 </script>

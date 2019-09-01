@@ -2,7 +2,7 @@ import Vue from 'Vue'
 import App from './App.vue'
 import ElementUI from 'element-ui';
 import mybells from 'mybellss';
-import {store} from './vuex/store.js';
+import store from './vuex/store.js';
 import 'element-ui/lib/theme-chalk/index.css';
 
 // import './模块js/ES6的Module/moudle'
