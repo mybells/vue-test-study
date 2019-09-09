@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import v1 from './v1.vue'
+import v2 from './v2.vue'
 
 Vue.use(VueRouter)
-const Foo = { template: '<div>foo</div>' }
-const Bar = { template: '<div>bar</div>' }
 
 export default new VueRouter({
   routes:[
-    { path: '/foo', component: Foo },
-    { path: '/bar', component: Bar }
+    { path: '/', components: () => import(/* webpackChunkName: "home" */ "./v1.vue") },
+    // { path: '/bar', components: v2 }
   ]
 })

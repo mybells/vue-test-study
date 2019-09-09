@@ -1,11 +1,15 @@
 <template>
-  <div>
+  <div id="app">
     <!-- <directive></directive> -->
     {{ss|filterss}}
     {{ss}}
     <import-com></import-com>
     <vuedata ref="vuedata" :ss="ss|filterss"></vuedata>
     <vuex></vuex>
+
+    <router-link to="/">bar</router-link>
+    <router-link to="/foo">foo</router-link>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -15,6 +19,7 @@
   import vuex from './vuex/vuex.vue'
   // import importCom from './import动态组件/import动态组件.vue'
   export default {
+    name: "App",
     data() {
       return {
         ss:'xxx'
