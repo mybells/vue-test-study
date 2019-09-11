@@ -7,9 +7,10 @@
     <vuedata ref="vuedata" :ss="ss|filterss"></vuedata>
     <vuex></vuex>
 
-    <router-link to="/">bar</router-link>
+    <router-link to="/">home</router-link>
     <router-link to="/foo">foo</router-link>
-    <router-link to="/bar">foo</router-link>
+    <router-link to="/bar">bar</router-link>
+    <router-link to="/father">father</router-link>
     <router-view></router-view>
   </div>
 </template>
