@@ -8,6 +8,7 @@
 <script>
   export default {
     created() {
+      let vm=this;
       debugger;
     },
     methods: {
