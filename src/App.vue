@@ -36,6 +36,7 @@
       vuex
     },
     created() {
+      console.log(process.env.NODE_ENV)
       // this.$sss('abc')//npm中的方法
     },
     mounted() {
