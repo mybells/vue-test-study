@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h2 class="vuex">获取父组件样式</h2>
     //////////** vuex **///////////
     vuex:{{key}}
     count:{{count}}

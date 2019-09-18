@@ -5,7 +5,7 @@
     {{ss}}
     <import-com></import-com>
     <vuedata ref="vuedata" :ss="ss|filterss"></vuedata>
-    <vuex></vuex>
+    <vuex class="appvuex">x</vuex>
 
     <router-link to="/">home</router-link>
     <router-link to="/foo">foo</router-link>
@@ -60,5 +60,17 @@
 </script>
 
 <style scoped>
-
+/* 在scoped条件下给子组件设置样式，以下三种都可以 */
+.appvuex ::v-deep .vuex{
+  color: brown;
+}
+/* .appvuex/deep/ .vuex{
+  color: brown;
+}
+.appvuex /deep/ .vuex{
+  color: brown;
+}
+.appvuex >>> .vuex{
+  color: brown;
+} */
 </style>

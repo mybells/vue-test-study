@@ -49,15 +49,44 @@ module.exports={
       },
       {
         test: /\.css$/,
-        use: [
-          'vue-style-loader',
-          'css-loader'
+        oneOf: [
+          // 这里匹配 `<style module>`
+          {
+            resourceQuery: /module/,
+            use: [
+              'vue-style-loader',
+              {
+                loader: 'css-loader',
+                options: {
+                  modules: true
+                }
+              }
+            ]
+          },
+          // 这里匹配普通的 `<style>` 或 `<style scoped>`
+          {
+            use: [
+              'vue-style-loader',
+              'css-loader'
+            ]
+          }
         ]
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
-          'file-loader'
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 4096,
+              fallback: {
+                loader: 'file-loader',
+                options: {
+                  name: 'img/[name].[hash:8].[ext]'
+                }
+              }
+            }
+          }
         ]
       },
       {
