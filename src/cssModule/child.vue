@@ -7,19 +7,21 @@
     <div :class="aaa.child1">aaa自定义module样式</div>
     <div :class="bbb.child2">bbb自定义module样式</div>
     <div class="test">@import样式</div>
-    <div id="ss">ja样式</div>
+    <div :class="ccc.lessstyle">less样式</div>
+    <div id="ss"></div>
   </div>
 </template>
 
 <script>
-  import test from "./style.css";
+  // import styles from "./style.module.css";
+  import styles from "./style.css";
   export default {
     created() {
       console.log(this.aaa)//{child1: "_2mExwqh3HrpsMmXmkoOXC-"}
     },
     mounted() {
       debugger;
-      document.getElementById('ss').innerHTML = '<div class="' + test + '">你你你</div>';
+      document.getElementById('ss').innerHTML = '<div class="' + styles.test + '">js中导入的css</div>';
     },
     methods: {
       getchild(){
@@ -58,4 +60,10 @@
 
 <style>
 @import url("./style.css");
+</style>
+
+<style lang="less" module="ccc">
+  .lessstyle{
+    color:brown
+  }
 </style>

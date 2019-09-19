@@ -50,9 +50,11 @@ module.exports={
               {
                 loader: 'css-loader',
                 options: {
-                  modules: true
+                  modules: true,
+                  importLoaders: 2,
                 }
               },
+              'postcss-loader',//有这个才能在css modules中js中使用import css
               'stylus-loader'
             ]
           },
@@ -61,6 +63,7 @@ module.exports={
             use: [
               'vue-style-loader',
               'css-loader',
+              'postcss-loader',
               'stylus-loader'
             ]
           }
@@ -77,18 +80,51 @@ module.exports={
               {
                 loader: 'css-loader',
                 options: {
-                  modules: true
+                  modules: true,
+                  importLoaders: 2
                 }
-              }
+              },
+              'postcss-loader'
             ]
           },
           // 这里匹配普通的 `<style>` 或 `<style scoped>`
           {
             use: [
               'vue-style-loader',
-              'css-loader'
+              'css-loader',
+              'postcss-loader'
             ]
-          }
+          },
+          // {
+          //   test: /\.module\.\w+$/,
+          //   use: [
+          //     'vue-style-loader',
+          //     /* config.module.rule('css').oneOf('normal-modules').use('css-loader') */
+          //     {
+          //       loader: 'css-loader',
+          //       options: {
+          //         importLoaders: 2,//可以在js模块中用import  https://github.com/webpack-contrib/css-loader#importloaders
+          //         modules: true,
+          //       }
+          //     }
+          //   ]
+          // }
+        ]
+      },
+      {
+        test: /\.less$/,
+        resourceQuery: /module/,
+        use: [
+          'vue-style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 2
+            }
+          },
+          'postcss-loader',
+          'less-loader'
         ]
       },
       {
