@@ -8,7 +8,8 @@
   "scripts": {
     "start": "webpack",
     "serve": "webpack-dev-server --open",
-    "build": "webpack ./src/htmlImport/import与require.js --output-path='./src/htmlImport/dist'"
+    "htmlImportbuild": "webpack ./src/htmlImport/import与require.js --output-path='./src/htmlImport/dist'",
+    "npmbuild": "webpack --config webpack.publishNpm.js"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

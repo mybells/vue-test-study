@@ -39,11 +39,11 @@
 
 <style lang="stylus" scoped>
 .all
-  width:1000px;
-  height:600px;
+  width:200px;
+  height:100px;
   background:blue;
   .test
-    width:500px;
-    height:500px;
+    width:100px;
+    height:50px;
     background yellow
 </style>

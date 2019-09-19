@@ -41,10 +41,29 @@ module.exports={
       },
       {
         test: /\.styl(us)?$/,
-        use: [
-          'vue-style-loader',
-          'css-loader',
-          'stylus-loader'
+        oneOf: [
+          // 这里匹配 `<style module>`
+          {
+            resourceQuery: /module/,
+            use: [
+              'vue-style-loader',
+              {
+                loader: 'css-loader',
+                options: {
+                  modules: true
+                }
+              },
+              'stylus-loader'
+            ]
+          },
+          // 这里匹配普通的 `<style>` 或 `<style scoped>`
+          {
+            use: [
+              'vue-style-loader',
+              'css-loader',
+              'stylus-loader'
+            ]
+          }
         ]
       },
       {

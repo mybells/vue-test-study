@@ -1,76 +1,67 @@
 <template>
   <div id="app">
-    <!-- <directive></directive> -->
-    {{ss|filterss}}
-    {{ss}}
-    <import-com></import-com>
-    <vuedata ref="vuedata" :ss="ss|filterss"></vuedata>
-    <vuex class="appvuex">x</vuex>
+    <div class="title">1.***********vue指令***********</div>
+    <directive></directive>
 
-    <router-link to="/">home</router-link>
+    <div class="title">2.***********import动态组件***********</div>
+    <import-async></import-async>
+
+    <div class="title">3.***********vuex***********</div>
+    <vuex></vuex>
+
+    <div class="title">4.***********router***********</div>
+    <router-link :to="{path:'/123'}">home</router-link>
     <router-link to="/foo">foo</router-link>
     <router-link to="/bar">bar</router-link>
     <router-link to="/father">father</router-link>
     <router-view></router-view>
+
+    <div class="title">5.***********vueWatch与data***********</div>
+    <vuewatchdata></vuewatchdata>
+
+    <div class="title">6.***********Css Modules Scoped***********</div>
+    <css-modules></css-modules>
+
+    <div class="title">7.***********npm publish***********</div>
+    <npm-publish></npm-publish>
   </div>
 </template>
 
 <script>
-  import directive from './vue指令.vue'
-  import vuedata from './vueWatch与data.vue'
-  import vuex from './vuex/vuex.vue'
-  // import importCom from './import动态组件/import动态组件.vue'
-  export default {
-    name: "App",
-    data() {
-      return {
-        ss:'xxx'
-      }
-    },
-    components:{
-      directive,
-      vuedata,
-      // importCom:(resolve)=>require(['./import动态组件/import动态组件.vue'],resolve),
-      importCom:() => import('./import动态组件/import动态组件.vue'),
-      // importCom,
-      vuex
-    },
-    created() {
-      console.log(process.env.NODE_ENV)
-      // this.$sss('abc')//npm中的方法
-    },
-    mounted() {
-      this.$children[0].b="bbb"//组件中b变为bbb，两秒后变为123
-      setTimeout(() => {
-        this.$refs.vuedata.b=123
-      }, 2000);
-      this.$emit('test', 'hi')
-    },
-    filters: {
-      filterss: function(value) {
-        return value+1//会将改变后的值传到子组件中
-      }
-    },
-    methods: {
-      sd(){
-        console.log(this.ss)
-      }
-    },
-  }
-</script>
+// import './模块js/ES6的Module/moudle'
+// import './模块js/CommonJS模块化/CommonJS'
+// import './模块js/AMD模块化/amd'
+// import './模块js/CMD模块化/cmd'
 
-<style scoped>
-/* 在scoped条件下给子组件设置样式，以下三种都可以 */
-.appvuex ::v-deep .vuex{
-  color: brown;
+import directive from './vue指令/vue指令.vue'
+import vuewatchdata from './vueWatch与data/father.vue'
+import vuex from './vuex/vuex.vue'
+import importAsync from './import动态组件/index.vue'
+import cssModules from './cssModule/cssmodule与scoped.vue'
+import npmPublish from './publishNpm/index.vue'
+export default {
+  name: "App",
+  components: {
+    directive,
+    vuewatchdata,
+    vuex,
+    importAsync,
+    cssModules,
+    npmPublish
+  },
+  created() {
+    console.log(process.env.NODE_ENV)
+  },
+  mounted() {
+  },
+  filters: {
+  },
+  methods: {
+  },
 }
-/* .appvuex/deep/ .vuex{
-  color: brown;
+</script>
+<style>
+.title {
+  margin-top: 20px;
 }
-.appvuex /deep/ .vuex{
-  color: brown;
-}
-.appvuex >>> .vuex{
-  color: brown;
-} */
 </style>
