@@ -11,7 +11,7 @@
     "build": "webpack ./src/htmlImport/import与require.js --output-path='./src/htmlImport/dist'"
   },
   "devDependencies": {
-    //"autoprefixer": "^7.1.2",//autoprefixer作为postcss插件用来解析CSS补充前缀，例如 display: flex会补充为display:-webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex。
+    //"autoprefixer": "^7.1.2",//autoprefixer作为postcss插件用来解析CSS补充前缀，例如 display: flex会补充为display:-webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex。//这个插件需要使用browserslistrc来工作，
     //"chalk": "^2.0.1",//用来在命令行输出不同颜色文字
     "babel-core": "^6.26.3",//babel的核心，把 js 代码分析成 ast ，方便各个插件分析语法进行相应的处理。
     "babel-loader": "^7.1.5",//使项目运行使用Babel和webpack来传输js文件，使用babel-core提供的api进行转译

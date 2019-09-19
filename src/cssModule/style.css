@@ -1,3 +1,12 @@
 .test {
   color: green;
 }
+
+:global(.global) {
+  color: red;
+}/* 全局class为global时颜色为red */
+
+/* 显式的局部作用域语法:local(.className)，等同于.className */
+:local(.local) {
+  color: orchid;
+}
