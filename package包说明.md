@@ -22,6 +22,7 @@
     "babel-preset-stage-2": "^6.24.1",//ECMAScript第二阶段的规范
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.2.0",
+    "postcss-loader": "^3.0.0",//PostCSS 是一个允许使用 JS 插件转换样式的工具。 这些插件可以检查（lint）你的 CSS，支持 CSS Variables 和 Mixins， 编译尚未被浏览器广泛支持的先进的 CSS 语法，内联图片，以及其它很多优秀的功能。https://github.com/postcss/postcss/blob/master/README-cn.md
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",

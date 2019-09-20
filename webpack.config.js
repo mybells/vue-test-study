@@ -32,7 +32,10 @@ module.exports={
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
+        options: {
+          hotReload: false // 关闭热重载
+        }
       },
       {
         test: /\.(js|jsx)$/,
