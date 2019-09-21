@@ -34,7 +34,7 @@ module.exports={
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
-          hotReload: false // 关闭热重载
+          hotReload: true // 关闭热重载
         }
       },
       {
