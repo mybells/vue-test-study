@@ -6,7 +6,6 @@ import store from './vuex/store.js';
 import router from '@/router/router';
 import 'element-ui/lib/theme-chalk/index.css';
 
-
 Vue.use(ElementUI);
 Vue.use(mybells);
 

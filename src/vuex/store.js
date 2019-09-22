@@ -4,7 +4,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     key: '1',
-    count:0
+    count: 0
   },
   mutations: {
     updateKey(state, payload) {

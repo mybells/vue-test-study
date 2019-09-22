@@ -40,7 +40,7 @@ import importAsync from './import动态组件/index.vue'
 import cssModules from './cssModule/cssmodule与scoped.vue'
 import npmPublish from './publishNpm/index.vue'
 export default {
-  name: "App",
+  name: 'App',
   components: {
     directive,
     vuewatchdata,
@@ -57,7 +57,7 @@ export default {
   filters: {
   },
   methods: {
-  },
+  }
 }
 </script>
 <style>

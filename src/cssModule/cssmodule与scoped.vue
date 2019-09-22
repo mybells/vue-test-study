@@ -7,7 +7,7 @@
 <script>
 import child from './child.vue';
   export default {
-    components:{
+    components: {
       child
     }
   }

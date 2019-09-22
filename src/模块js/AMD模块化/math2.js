@@ -1,3 +1,3 @@
-define(['./math'],function(callback) {
+define(['./math'], function(callback) {
   return callback
 })

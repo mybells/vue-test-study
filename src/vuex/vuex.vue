@@ -14,43 +14,43 @@ import store from './store.js';
     data() {
       return {
         // key:store.state.key
-        key:0
+        key: 0
       }
     },
     created() {
       setTimeout(() => {
-        this.$store.commit('updateKey','value')
-        this.key=this.$store.state.key
+        this.$store.commit('updateKey', 'value')
+        this.key = this.$store.state.key
       }, 2000);
-      this.key=this.$store.state.key
+      this.key = this.$store.state.key
       setTimeout(() => {
-        this.$store.state.key=4
-        this.key=store.state.key
+        this.$store.state.key = 4
+        this.key = store.state.key
       }, 1000);
 
-      var x=function(){
-        return [1,2,3]
+      var x = function() {
+        return [1, 2, 3]
       }
-      console.log(x()[0])//1
+      console.log(x()[0])// 1
     },
     watch: {
-      '$store.state.key':function(x,y){
-        console.log(x,y)
+      '$store.state.key': function(x, y) {
+        console.log(x, y)
       }
     },
     computed: {
-      count(){
+      count() {
         return this.$store.state.count
       }
     },
     methods: {
-      setkey(){
+      setkey() {
         this.$store.commit('updateCount')
       },
-      setkey2(){
-        this.$store.dispatch('asyncUpdateCount',1)
+      setkey2() {
+        this.$store.dispatch('asyncUpdateCount', 1)
       }
-    },
+    }
   }
 </script>
 

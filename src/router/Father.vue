@@ -9,10 +9,10 @@
 <script>
   export default {
     methods: {
-      getchild(){
+      getchild() {
         this.$router.push('/child1');
       }
-    },
+    }
   }
 </script>
 

@@ -6,12 +6,12 @@
 
 <script>
   export default {
-    props:['ss'],
+    props: ['ss'],
     data() {
       return {
-        _a:'a',
-        b:'b',
-        arr:[1,2,3]
+        _a: 'a',
+        b: 'b',
+        arr: [1, 2, 3]
       }
     },
     watch: {
@@ -19,29 +19,30 @@
       //   //当arr数组新增或者改变时会触发
       // },
       // arr:'watchmethod',//执行methods中的watchmethod事件,传两个参数val,oldval
-      arr:[//会按照数组下标顺序执行
-        'watchmethod',//watchmethod
-        function handler2(val, oldVal) {//再执行handler2
+      arr: [// 会按照数组下标顺序执行
+        'watchmethod', // watchmethod
+        function handler2(val, oldVal) { // 再执行handler2
         },
-        {//最后执行handler3
-          handler: function handler3 (val, oldVal) { /* ... */ },
+        { // 最后执行handler3
+          handler: function handler3 (val, oldVal) { /* ... */ }
           /* ... */
         }
       ]
     },
     created() {
-      let a=this._a//undefined
-      let b=this.$data._a//a
+      const a = this._a// undefined
+      const b = this.$data._a// a
       this.arr.push(4)
     },
     mounted() {
+      debugger;
       this.$parent.$on('test', function (msg) {
         console.log(msg)
       })
     },
     methods: {
-      watchmethod(val,oldval){
-        //数组改变时触发这个函数
+      watchmethod(val, oldval) {
+        // 数组改变时触发这个函数
       }
     }
   }

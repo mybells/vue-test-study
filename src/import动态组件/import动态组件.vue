@@ -10,7 +10,7 @@ export default {
     return {
       testtest: 'test'
     }
-  },
+  }
 }
 </script>
 

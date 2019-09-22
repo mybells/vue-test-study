@@ -28,11 +28,11 @@
   import styles from "./style.css?module";
   export default {
     created() {
-      console.log(this.$style)//{child1: "_2mExwqh3HrpsMmXmkoOXC-"}
-      console.log(this.aaa)//{child1: "_2mExwqh3HrpsMmXmkoOXC-"}
+      console.log(this.$style)// {child1: "_2mExwqh3HrpsMmXmkoOXC-"}
+      console.log(this.aaa)// {child1: "_2mExwqh3HrpsMmXmkoOXC-"}
     },
     mounted() {
-      //显式的局部作用域语法:local(.className)，等同于.className
+      // 显式的局部作用域语法:local(.className)，等同于.className
       document.getElementById('ss').innerHTML = `
       <div class="${styles.test}">js中导入的css</div>
       <div class="global">global样式</div>
@@ -40,10 +40,10 @@
       `;
     },
     methods: {
-      getchild(){
+      getchild() {
         this.$router.push('child1');
       }
-    },
+    }
   }
 </script>
 <style scoped>

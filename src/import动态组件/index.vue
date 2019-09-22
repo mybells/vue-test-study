@@ -13,8 +13,8 @@ export default {
   },
   components: {
     // importCom:(resolve)=>require(['./import动态组件.vue'],resolve),
-    importCom: () => import('./import动态组件.vue'),
+    importCom: () => import('./import动态组件.vue')
     // importCom,
-  },
+  }
 }
 </script>

@@ -8,9 +8,9 @@
 export default {
   methods: {
     getval() {
-      this.$sss('abc')//npm中的方法,alert('abc')
+      this.$sss('abc')// npm中的方法,alert('abc')
     }
-  },
+  }
 }
 </script>
 

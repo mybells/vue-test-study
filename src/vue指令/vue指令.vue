@@ -13,27 +13,27 @@
 
     },
     methods: {
-      btnck(){
+      btnck() {
         console.log('click')
       }
     },
     directives: {
       has: {
         bind(el, binding, vnode) {
-          el.addEventListener('mousedown', _mousedown, false);//默认false，冒泡
-          function _mousedown(event){
-            if(event.target===el){
-              //这个是点击自身
+          el.addEventListener('mousedown', _mousedown, false);// 默认false，冒泡
+          function _mousedown(event) {
+            if (event.target === el) {
+              // 这个是点击自身
             }
             console.log(binding.value)
             // setTimeout(() => {
             //   console.log(binding.value)
             // }, 2000);
-            //addEventListener冒泡，点击按钮，先触发mousedown事件,由自身冒泡到外部,然后click事件。事件是同步执行的,内部函数这是异步的,返回值按照请求时间顺序返回
+            // addEventListener冒泡，点击按钮，先触发mousedown事件,由自身冒泡到外部,然后click事件。事件是同步执行的,内部函数这是异步的,返回值按照请求时间顺序返回
           }
         }
-      },
-    },
+      }
+    }
   }
 </script>
 

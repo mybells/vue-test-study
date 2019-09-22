@@ -24,14 +24,14 @@ export default new Router({
       component: Father,
       children: [
         { path: '/child1', component: Child1 },
-        { path: '/child2', component: Child2 },
+        { path: '/child2', component: Child2 }
       ]
     },
     {
       path: '/:id',
       component: Home,
       children: [
-        { path: '', component: HomeChildren },
+        { path: '', component: HomeChildren }
       ]
     }
   ]
