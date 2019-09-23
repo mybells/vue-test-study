@@ -24,6 +24,9 @@ module.exports = {
   ],
   // add your custom rules here
   'rules': {
+    'no-multiple-empty-lines':0,//多个空行
+    'no-trailing-spaces':0,//空格
+    "no-redeclare":0,//重复声明
     "func-call-spacing":0,
     "no-unexpected-multiline":0,
     "no-template-curly-in-string":0,

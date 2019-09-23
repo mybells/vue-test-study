@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>javascriptDOM</title>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/atom-one-dark.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+  <div>再给某个元素添加了事件处理函数后，一旦时间发生，相应的js代码就会执行。被调用的js代码可以返回一个值，这个值将会传递给那个事件处理函数.所以可以return false阻止默认行为</div>
+  <div onclick="console.log('third')">
+    <a id="a" href="www.baidu.com" onclick="console.log('first');">e.preventDefault()点击取消默认跳转行为</a>
+    <a id="b" href="www.baidu.com" onclick="return false;">return false;点击取消默认跳转行为,并阻止冒泡</a>
+  </div>
+
+  <ul id="ul">
+    <li id="id1" class="c1" name="d1">textxx</li>
+  </ul>
+
+  <div>************HTML DOM 元素对象***************</div>
+  <div>element.childNodes</div>
+  <div>element.children</div>
+  <div>element.nodeType:元素节点:1,属性节点:2,文本节点:3</div>
+  <div>element.nodeValue</div>
+  <div>element.firstChild==element.childNodes[0]</div>
+  <div>element.lastChild==element.childNodes[element.childNodes.length-1</div>
+
+  <pre style="font-size:15px;">
+    <code class='javascript'>
+      如果内联元素有这个事件先执行内联事件再执行addEventListener事件。
+      document/element.addEventListener(event, function, useCapture)
+      可选。布尔值，指定事件是否 在捕获或冒泡阶段执行。
+      可能值：
+      true - 事件句柄在捕获阶段执行
+      false- 默认。事件句柄在冒泡阶段执行
+
+      document/element.removeEventListener(event, function, useCapture)
+      可选。布尔值，指定移除事件句柄的阶段。
+      可能值：
+      true - 事件句柄在捕获阶段移除
+      false- 默认。事件句柄在冒泡阶段移除
+      注意： 如果添加两次事件句柄，一次在捕获阶段，一次在冒泡阶段，你必须单独移除该事件。
+
+      event.preventDefault()//如果此事件没有被显式处理，那么它默认的动作也不要做（因为默认是要做的）。此事件还是继续传播，除非碰到事件侦听器调用stopPropagation() 或stopImmediatePropagation()，才停止传播。
+      你可以使用 event.cancelable 来检查该事件是否支持取消。为一个不支持cancelable的事件调用preventDefault()将没有效果。
+
+      event.stopPropagation()//不再派发事件。阻止捕获和冒泡阶段中当前事件的进一步传播。
+      Event.cancelBubble 属性是 Event.stopPropagation()的一个曾用名。在从事件处理程序返回之前将其值设置为true可阻止事件的传播。
+    </code>
+  </pre>
+</body>
+<script>
+document.querySelector("#a").addEventListener("click", function(event) {
+  event.preventDefault();//只阻止默认行为，此事件还是继续传播，继续冒泡，除非有stopPropagation()
+  console.log('second')
+  //依次打印first，second，third
+  //event.stopPropagation();//不再派发事件。阻止捕获和冒泡阶段中当前事件的进一步传播。
+
+}, false);//false默认冒泡
+
+document.querySelector("#b").addEventListener("click", function(event) {
+  event.stopPropagation();//不再派发事件。阻止捕获和冒泡阶段中当前事件的进一步传播。
+}, false);
+
+
+
+
+
+  var element=document.getElementById('ul');
+/* 1.element.childNodes */
+  console.log(element.childNodes);
+  element.childNodes.forEach(item=>{console.log(item.nodeValue)})
+  // NodeList(3) [text, li#id1.c1, text]
+  // 0: text
+  // 1: li#id1.c1
+  // 2: text
+  // length: 3
+
+/* 2.element.children */
+  console.log(element.children);
+  // HTMLCollection [li#id1.c1, id1: li#id1.c1, d1: li#id1.c1]
+  //   0: li#id1.c1
+  //   length: 1
+  //   d1: li#id1.c1 //name
+  //   id1: li#id1.c1 //id
+  //   __proto__: HTMLCollection
+/* 3.element.nodeType */
+  console.log(element.nodeType);//1，元素节点
+/* 4.element.nodeValue */
+  console.log(element.nodeValue);//null
+
+  var el=document.getElementById('id1');
+  console.log(el.childNodes);//NodeList [text]
+  console.log(el.nodeValue);//null
+  console.log(el.childNodes[0].nodeValue);//textxx
+  el.childNodes[0].nodeValue='sss'
+
+
+
+/* 5.element.firstChild */
+  console.log(element.firstChild===element.childNodes[0]);//true
+
+
+/* 6.element.lastChild */
+  console.log(element.lastChild===element.childNodes[element.childNodes.length-1]);//true
+</script>
+</html>

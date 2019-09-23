@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>javascriptDOM</title>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/atom-one-dark.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
   <ul id="ul" class="cclass">
@@ -48,106 +51,105 @@
 </body>
 <script>
 /* 1.document.getElementById */
-  //document上只可以用
-  //没有返回null
-  var val1=document.getElementById('id1');
-  console.log(val1,val1 instanceof Object)//<li id="id1" class="c1">1</li> true
-
+  // document上只可以用
+  // 没有返回null
+  var val1 = document.getElementById('id1');
+  console.log(val1, val1 instanceof Object)// <li id="id1" class="c1">1</li> true
 
 /* 2.document.getElementsByClassName */
-  //document和element上都可以用
-  var val2=document.getElementsByClassName('c1');
-  console.log(val2,val2.id1,val2 instanceof Object)
+  // document和element上都可以用
+  var val2 = document.getElementsByClassName('c1');
+  console.log(val2, val2.id1, val2 instanceof Object)
   /* 类数组对象：HTMLCollection(5) [li#id1.c1, li#id2.c1, li#id3.c1, li#id4.c1, li#id5.c1,
   id1: li#id1.c1, id2: li#id2.c1, id3: li#id3.c1, id4: li#id4.c1, id5: li#id5.c1] */
-  //<li id="id1" class="c1">1</li>
-  //true
-  /* HTMLCollection类数组对象不能用map，forEach循环会报错。for in 循环会遍历原型,for可以*/
+  // <li id="id1" class="c1">1</li>
+  // true
+  /* HTMLCollection类数组对象不能用map，forEach循环会报错。for in 循环会遍历原型,for可以 */
 
-  var val2=document.getElementsByClassName('cclass');
-  console.log(val2)//HTMLCollection [ul#ul.cclass, ul: ul#ul.cclass] length是1
-  //var val3=val2[0].getElementById('id1');// 元素对象没有getElementByIdUncaught TypeError: val2[0].getElementById is not a function
+  var val2 = document.getElementsByClassName('cclass');
+  console.log(val2)// HTMLCollection [ul#ul.cclass, ul: ul#ul.cclass] length是1
+  // var val3=val2[0].getElementById('id1');// 元素对象没有getElementByIdUncaught TypeError: val2[0].getElementById is not a function
 
-  var val5=document.getElementById('ul').getElementsByClassName('c2');
+  var val5 = document.getElementById('ul').getElementsByClassName('c2');
   console.log(val5)
   /* HTMLCollection(5) [li#id6.c2, li#id7.c2, li#id8.c2, li#id9.c2, li#id10.c2,
   id6: li#id6.c2, id7: li#id7.c2, id8: li#id8.c2, id9: li#id9.c2, id10: li#id10.c2] */
 
-
 /* 3.document.getElementsByTagName */
-  //document和element上都可以用
-  var val8=document.getElementsByTagName('li');
+  // document和element上都可以用
+  var val8 = document.getElementsByTagName('li');
   console.log(val8)
   /* HTMLCollection(10) [li#id1.c1, li#id2.c1, li#id3.c1, li#id4.c1, li#id5.c1, li#id6.c2, li#id7.c2, li#id8.c2, li#id9.c2, li#id10.c2,
   id1: li#id1.c1, id2: li#id2.c1, id3: li#id3.c1, id4: li#id4.c1, id5: li#id5.c1, …] */
 
-  var val7=document.getElementById('ul').getElementsByTagName('*');//返回val6节点中所有子节点
+  var val7 = document.getElementById('ul').getElementsByTagName('*');// 返回val6节点中所有子节点
   console.log(val7)
   /* HTMLCollection(10) [li#id1.c1, li#id2.c1, li#id3.c1, li#id4.c1, li#id5.c1, li#id6.c2, li#id7.c2, li#id8.c2, li#id9.c2, li#id10.c2,
   id1: li#id1.c1, id2: li#id2.c1, id3: li#id3.c1, id4: li#id4.c1, id5: li#id5.c1, …] */
 
-
 /* 4.document.getElementsByName */
-  //document上只可以用
-  var val9=document.getElementsByName('d1');
-  console.log(val9,val9 instanceof Object)//NodeList [li#id1.c1],true
+  // document上只可以用
+  var val9 = document.getElementsByName('d1');
+  console.log(val9, val9 instanceof Object)// NodeList [li#id1.c1],true
     // entries: ƒ entries()
     // forEach: ƒ forEach()
     // item: ƒ item()
     // keys: ƒ keys()
     // length: (...)
     // values: ƒ values()
-  //NodeList类数组对象可以用以上方法，for in会循环原型，for，forEach可以用
-
+  // NodeList类数组对象可以用以上方法，for in会循环原型，for，forEach可以用
 
 /* 5.document.querySelector */
-  //document和element上都可以用
-  //可以使用它们的 id, 类, 类型, 属性, 属性值等来选取元素。
+  // document和element上都可以用
+  // 可以使用它们的 id, 类, 类型, 属性, 属性值等来选取元素。
   // 获取文档中 class="example" 的第一个 <p> 元素:没有返回null
   // document.querySelector("p.example");
   // 获取文档中有 "target" 属性的第一个 <a> 元素：
   // document.querySelector("a[target]");
 
-  var val10=document.querySelector('#ul');//querySelector() 方法返回文档中匹配指定 CSS 选择器的一个元素。
-  var val11=document.querySelector('.c1');
-  var val14=document.querySelector('*');//返回了html节点
-  var val16=document.querySelector('*').querySelector('.c1');
-  console.log(val10,val10 instanceof Object)//<ul id="ul" class="cclass">...</ul>,true
-  console.log(val11,val11 instanceof Object)//<li id="id1" class="c1">1</li> true
-  console.log(val14)//<html>...</html>
-  console.log(val16)//<li id="id1" class="c1">1</li> true
+  var val10 = document.querySelector('#ul');// querySelector() 方法返回文档中匹配指定 CSS 选择器的一个元素。
+  var val11 = document.querySelector('.c1');
+  var val14 = document.querySelector('*');// 返回了html节点
+  var val16 = document.querySelector('*').querySelector('.c1');
+  console.log(val10, val10 instanceof Object)// <ul id="ul" class="cclass">...</ul>,true
+  console.log(val11, val11 instanceof Object)// <li id="id1" class="c1">1</li> true
+  console.log(val14)// <html>...</html>
+  console.log(val16)// <li id="id1" class="c1">1</li> true
 
 /* 6.document.querySelectorAll */
-  //document和element上都可以用
-  //querySelectorAll() 方法返回文档中匹配指定 CSS 选择器的所有元素，返回 NodeList 对象。
+  // document和element上都可以用
+  // querySelectorAll() 方法返回文档中匹配指定 CSS 选择器的所有元素，返回 NodeList 对象。
 
-  var val12=document.querySelectorAll('#ul');//querySelector() 方法返回文档中匹配指定 CSS 选择器的一个元素。
-  var val13=document.querySelectorAll('.c1');
-  var val15=document.querySelectorAll('*');
-  var val=document.getElementById('ul').querySelectorAll('.c1');
-  console.log(val12,val12 instanceof Object)
+  var val12 = document.querySelectorAll('#ul');// querySelector() 方法返回文档中匹配指定 CSS 选择器的一个元素。
+  var val13 = document.querySelectorAll('.c1');
+  var val15 = document.querySelectorAll('*');
+  var val = document.getElementById('ul').querySelectorAll('.c1');
+  console.log(val12, val12 instanceof Object)
   /* NodeList [ul#ul.cclass] true */
-  console.log(val13,val13 instanceof Object)
+  console.log(val13, val13 instanceof Object)
   /* NodeList(5) [li#id1.c1, li#id2.c1, li#id3.c1, li#id4.c1, li#id5.c1] true */
-  console.log(val15,val15 instanceof Object)
+  console.log(val15, val15 instanceof Object)
   /* NodeList(44) [html, head, meta, meta, meta, title, body, ul#ul.cclass, li#id1.c1, li#id2.c1, li#id3.c1, li#id4.c1, li#id5.c1, li#id6.c2, li#id7.c2, li#id8.c2, li#id9.c2, li#id10.c2, div, div, div, div, div, div, div, div, div, div, div, div, div, div, div, div, div, div, div, div, div, div, div, div, div, script] true */
   console.log(val)
   /* NodeList(5) [li#id1.c1, li#id2.c1, li#id3.c1, li#id4.c1, li#id5.c1] */
 
-
 /* 7.element.getAttribute */
-    //element上只可以用
-    var val17=document.getElementById('ul').getAttribute('name');
-    var val18=document.getElementById('id1').getAttribute('name');
-    console.log(val17)//null
-    console.log(val18)//d1
-
+    // element上只可以用
+    var val17 = document.getElementById('ul').getAttribute('name');
+    var val18 = document.getElementById('id1').getAttribute('name');
+    console.log(val17)// null
+    console.log(val18)// d1
 
 /* 8.element.setAttribute */
-  //element上都可以用,dom立即改变
-  var val20=document.getElementById('ul').setAttribute('name','ul');
-  var val19=document.getElementById('id1').setAttribute('name','vvv');
-  console.log(val20)//undifined 没有返回值
-  console.log(val19)//undifined 没有返回值
+  // element上都可以用,dom立即改变
+  var val20 = document.getElementById('ul').setAttribute('name', 'ul');
+  var val19 = document.getElementById('id1').setAttribute('name', 'vvv');
+  // 在 setAttribute 函数为元素设置属性时，无论你传递的值是什么类型，它都会将该值转为字符串再设置到元素上，
+  var val21 = document.getElementById('id1').setAttribute('checked', false);
+  var val22 = document.getElementById('id1').getAttribute('checked');// 'false'
+  console.log(val20)// undifined 没有返回值
+  console.log(val19)// undifined 没有返回值
+  console.log(val22)// 'false'
+  console.log(document.getElementById('id1').getAttribute('checked') instanceof Boolean);// false
 </script>
 </html>
