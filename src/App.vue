@@ -24,6 +24,9 @@
 
     <div class="title">7.***********npm publish***********</div>
     <npm-publish></npm-publish>
+
+    <div class="title">7.***********vueloder自定义块***********</div>
+    <ComponentA></ComponentA>
   </div>
 </template>
 
@@ -39,6 +42,7 @@ import vuex from './vuex/vuex.vue'
 import importAsync from './import动态组件/index.vue'
 import cssModules from './cssModule/cssmodule与scoped.vue'
 import npmPublish from './publishNpm/index.vue'
+import ComponentA from './vueloder自定义块/ComponentA.vue'
 export default {
   name: 'App',
   components: {
@@ -47,7 +51,8 @@ export default {
     vuex,
     importAsync,
     cssModules,
-    npmPublish
+    npmPublish,
+    ComponentA
   },
   created() {
     console.log(process.env.NODE_ENV)

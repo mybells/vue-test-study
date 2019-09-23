@@ -2,6 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -42,6 +43,16 @@ module.exports = {
         options: {
           hotReload: true // 关闭热重载
         }
+      },
+      {
+        //匹配vueloader自定义模块/ComponentA.vue中标签名为docs的块
+        resourceQuery: /blockType=docs/,
+        loader: require.resolve('./src/vueloder自定义块/loader.js')
+      },
+      {
+        //匹配vueloader自定义模块/ComponentA.vue中lang 特性为langxxx的块
+        test: /\.langxxx$/,
+        loader: require.resolve('./src/vueloder自定义块/loader.js')
       },
       {
         test: /\.(js|jsx)$/,
@@ -165,6 +176,9 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './src/index.html'
+    }),
+    new StyleLintPlugin({
+      files: ['**/*.{vue,htm,html,css,sss,less,scss,sass}'],
     })
   ]
 }

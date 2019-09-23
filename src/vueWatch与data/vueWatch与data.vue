@@ -35,7 +35,6 @@
       this.arr.push(4)
     },
     mounted() {
-      debugger;
       this.$parent.$on('test', function (msg) {
         console.log(msg)
       })

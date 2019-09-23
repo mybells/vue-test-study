@@ -8,7 +8,7 @@
   "scripts": {
     "start": "webpack",
     "serve": "webpack-dev-server --open",
-    "lint": "eslint --fix --ext .js,.vue src --ext .html html",
+    "lint": "eslint --fix --ext .js,.vue src --ext html",
     "htmlImportbuild": "webpack ./src/htmlImport/import与require.js --output-path='./src/htmlImport/dist'",
     "npmbuild": "webpack --config webpack.publishNpm.js"
   },
@@ -40,6 +40,8 @@
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
     "postcss-loader": "^3.0.0",
+    "stylelint": "^11.0.0",
+    "stylelint-webpack-plugin": "^0.10.5",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "url-loader": "^2.1.0",
