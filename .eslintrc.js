@@ -24,6 +24,8 @@ module.exports = {
   ],
   // add your custom rules here
   'rules': {
+    "no-prototype-builtins":0,
+    "no-proto":0,
     'no-multiple-empty-lines':0,//多个空行
     'no-trailing-spaces':0,//空格
     "no-redeclare":0,//重复声明

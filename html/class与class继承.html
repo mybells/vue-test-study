@@ -8,21 +8,23 @@
 </head>
 <body>
   <script>
-    class A{
-      x='x'//相当于this.x='x'
-      constructor(){
-        console.log(this.x)//x
-        this.a='a'
-        this.name=(x,y)=>{
-          this.d="d"
-          console.log(x,y)
+    class A {
+      x='x'// 相当于this.x='x'
+      constructor() {
+        console.log(this.x)// x
+        this.a = 'a'
+        this.name = (x, y) => {
+          this.d = "d"
+          console.log(x, y)
         }
         // x='a'//Uncaught ReferenceError: x is not defined
       }
+
       name1() {
-        this.b='b'
+        this.b = 'b'
         return this.d
-      };
+      }
+;
       static c='c'
     };
 
@@ -43,14 +45,16 @@
     // ƒ () { [native code] }
 
 
-    class B extends A{
-      constructor(){
+    class B extends A {
+      constructor() {
         super();
-        this.x2="x2"
+        this.x2 = "x2"
       }
+
       name3() {
-        this.i2='i2'
-      };
+        this.i2 = 'i2'
+      }
+;
       static v2='v2'
       s2='s2'
     }
@@ -77,7 +81,7 @@
     //   __proto__: Object
 
     console.log(B.__proto__)
-    //class A{...}
+    // class A{...}
 
     // 上面代码中,子类B的__proto__属性指向父类A,子类B的prototype属性的__proto__属性指向父类A的prototype属性
     // B.__proto__===A //true

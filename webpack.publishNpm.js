@@ -13,8 +13,8 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, './src/publishNpm/dist'),
-    library: "mybells", //library就是webpack打包内容的名字
-    libraryTarget: "umd" //libraryTarget就是配置webpack打包内容的模块方式的参数
+    library: "mybells", // library就是webpack打包内容的名字
+    libraryTarget: "umd" // libraryTarget就是配置webpack打包内容的模块方式的参数
     // commonjs/commonjs2: 将你的library暴露为CommonJS模块
     // amd: 将你的library暴露为amd模块
     // umd: 将你的library暴露为所有的模块定义下都可运行的方式
@@ -24,7 +24,7 @@ module.exports = {
       test: /\.(js|jsx)$/,
       loader: 'babel-loader',
       exclude: /node_modules/
-    }, ]
+    }]
   },
   plugins: []
 }

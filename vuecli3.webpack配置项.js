@@ -1,4 +1,4 @@
-{
+module.exports = {
   mode: 'development',
   context: 'C:\\Users\\suninfo\\Desktop\\新建文件夹 (2)\\app',
   devtool: 'cheap-module-eval-source-map',
