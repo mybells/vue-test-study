@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/atom-one-dark.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+  <pre>
+    <code class="javascript">
+      用指定的名称将指定的资源加载到浏览器上下文（窗口 window ，内嵌框架 iframe 或者标签 tab ）。如果没有指定名称，则一个新的窗口会被打开并且指定的资源会被加载进这个窗口的浏览器上下文中。
+      window.open;
+
+      let windowObjectReference = window.open(strUrl, strWindowName, [strWindowFeatures]);
+      strUrl === 要在新打开的窗口中加载的URL。
+      strWindowName === 新窗口的名称。如果已经存在以 strWindowName 为名称的窗口，则不再打开一个新窗口，而是把 strUrl 加载到这个窗口中。
+      strWindowFeatures === 一个可选参数，列出新窗口的特征(大小，位置，滚动条等)作为一个DOMString。
+
+
+      窗口name值	  描述
+      _blank	      默认的，在新窗口打开链接的url
+      _self	        在当前窗口打开链接url
+      _parent	      在父窗口打开链接url
+      _top	        在顶级窗口打开url
+      framename	    在指定的框架中打开链接url
+
+      如果要在每次调用 window.open()时都打开一个新标签，则要把参数 strWindowName 设置为 _blank。
+      如果调用 window.open()时改变自身标签页，则要把参数 strWindowName 设置为 _self。
+      如果 strWindowFeatures 参数中没有定义窗口大小，则新窗口的尺寸跟最近渲染的窗口尺寸一样。
+      如果你定义了 strWindowFeatures 参数，那么没有在这个字符串中列出的特性会被禁用或移除 （除了 titlebar 和 close 默认设置为yes）
+
+      1、window.open(url)或者window.open(url, name),其中name为_blank
+        标准浏览器、IE9+是新标签打开链接url
+        ie6-8是新窗口打开链接url
+      2、window.open(url, name)，其中name为非_blank的其他4个值
+        此时会会在指定窗口或者frame打开链接url
+      3、window.open(url, name, configration)
+　　    只要配置了configration，所有浏览器都是新窗口打开链接url（没有location=yes属性）
+    </code>
+  </pre>
+  <img src="https://developer.mozilla.org/@api/deki/files/210/=FirefoxChromeToolbarsDescription7a.gif" alt="">
+  <script>
+    //location=yes新标签页打开
+    let strWindowFeatures = `
+      menubar=yes,
+      resizable=yes,
+      scrollbars=yes,
+      status=yes,
+      width=320,
+      height=480
+    `;
+    window.open('http://www.baidu.com','popup',strWindowFeatures);//新窗口打开百度,如果原来存在popup窗口或者标签就在原来页面重新加载
+    // window.open('http://www.baidu.com','_blank',strWindowFeatures);//每次都是新窗口打开百度，打开几次都是重新打开页面
+    // window.open('','_blank',strWindowFeatures);//新窗口打开空白页
+    // window.open('http://www.baidu.com','_parent',strWindowFeatures);//没有parent就当前页打开百度
+
+  </script>
+</body>
+</html>
