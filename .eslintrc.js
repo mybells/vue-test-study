@@ -23,7 +23,7 @@ module.exports = {
     // 'html'
   ],
   // add your custom rules here
-  'rules': {
+  rules: {
     "space-infix-ops":2,//要求操作符周围有空格
     "keyword-spacing":2,//强制在关键字前后使用一致的空格
     "space-before-blocks":2,//强制在块之前使用一致的空格
