@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DOM，ajax</title>
+</head>
+<body>
+  <div class="test">1</div>
+  <div id="list">
+    <div id="x1">x1</div>
+    <div id="x2">x2</div>
+  </div>
+  <script>
+  /* document.write() */
+    var test=document.getElementsByClassName('test')[0];
+    // test.write('test');//test.write is not a function
+    document.write('document');
+
+  /* 加入id属性并立即调用，证明操作dom是同步的 */
+    test.id="ttt";//或者test.setAttribute('id','ttt');
+    var change=document.getElementById('ttt');
+    console.log(change)//<div class="test" id="ttt">1</div>
+
+  /* document.createElement(),document.createTextNode(),appendChild() */
+    var div=document.createElement('div')
+    div.id='div'
+    var txt=document.createTextNode('test');
+    var s1=div.appendChild(txt);
+    console.log(div)//<div id="div">1</div>
+    console.log(s1)//'test'
+    console.log(txt===s1)//true
+    document.body.appendChild(div);
+
+  /* insertBefore() */
+    var x2=document.getElementById('x2');
+    var list=document.getElementById('list');
+    list.insertBefore(document.createTextNode('xxx'),x2)//在list中x2前插入xxx文本
+
+  /* nextSibling */
+    var x1=document.getElementById('x1');
+    var s1=x1.nextSibling.nextSibling;
+    console.log(s1)//"xxx"
+
+    console.log(x1.innerHTML);//x1
+
+  /* ajax */
+    //区分ie
+    function getHttpObject(){
+      if(typeof XMLHttpRequest=='undefined'){
+        XMLHttpRequest=function(){
+          // IE6, IE5 浏览器执行代码
+          //ActiveXObject("Microsoft.XMLHTTP")
+          try{return new ActiveXObject('Msxml2.XMLHTTP.6.0')}catch(e){}
+          try{return new ActiveXObject('Msxml2.XMLHTTP.3.0')}catch(e){}
+          try{return new ActiveXObject('Msxml2.XMLHTTP')}catch(e){}
+          return false;
+        }
+      }
+      //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+      return new XMLHttpRequest();
+    }
+
+    function getContent(params) {
+      var request=getHttpObject();
+      if(request){
+        // open(method,url,async)
+          // method：请求的类型；GET 或 POST
+          // url：文件在服务器上的位置
+          // async：true（异步）或 false（同步）
+        request.open('get','./example.txt',true);
+
+
+        // request.open("POST","/try/ajax/demo_post2.php",true);
+        // request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        // request.send("fname=Henry&lname=Ford");
+        request.onreadystatechange=function(){
+          if(request.readyState==4){
+            // readyState有四个值：
+            // 0：未初始化
+            // 1：正在加载
+            // 2：加载完毕
+            // 3：正在交互
+            // 4：完成
+
+
+            // responseText	获得字符串形式的响应数据。
+            // responseXML	获得 XML 形式的响应数据。
+            var txt=document.createTextNode(request.responseText);
+            document.body.appendChild(txt);
+          }
+        }
+        //send(string)
+          //string：仅用于 POST 请求
+        request.send(null)
+      }
+    }
+    getContent();
+  </script>
+</body>
+</html>
