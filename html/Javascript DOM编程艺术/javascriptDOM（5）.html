@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CSS-DOM</title>
+  <style>
+    input[type*='text']{
+      font-size: 20px;
+    }
+
+    p:first-of-type{
+      color: orange;
+      font-weight: bold;
+    }
+    p:last-of-type{
+      color: darkblue;
+      font-weight: bold;
+    }
+
+    p:first-child{
+      color: green;
+      font-weight: bold;
+    }
+    p:last-child{
+      color: rebeccapurple;
+      font-weight: bold;
+    }
+
+    s:before{
+      content:'before'
+    }
+    s:after{
+      content:'after'
+    }
+
+    li:nth-child(odd){/* 奇数行 */
+      background: #ccc;
+    }
+    li:nth-child(even){
+      background: skyblue;
+    }
+
+    s:hover{
+      color:red;
+    }
+
+    .add1{
+      color:blue;
+    }
+    .add2{
+      font-size: 20px;
+      background-color: lightcoral;
+    }
+  </style>
+</head>
+<body>
+  <p>first-child</p>
+  <div id="css">修改样式</div>
+  <div>
+    <div>div第一个元素</div>
+    <p>div第一个子元素p</p>
+  </div>
+  <div>
+    <input type="text">
+  </div>
+  <p>不是父级的第一个子级，first-child不会修改样式</p>
+  <div>通过style属性获取样式有局限性，只能返回内联样式。在head和外部样式表中的css不会进入到style对象（就是说不能获取到样式）。</div>
+  <p>last-child</p>
+
+  <div>
+    <li>:first-child	p:first-child	指定只有当p元素是其父级的第一个子级的样式。(必须是父元素第一个子元素)</li>
+    <li>:last-child	p:last-child	选择每个p元素是其父级的最后一个子级。</li>
+    <li>:nth-child(n)	p:nth-child(2)	选择每个p元素是其父级的第二个子元素</li>
+  </div>
+
+  <div style="margin-top:10px;">
+    <li>:first-of-type	p:first-of-type	选择每个p元素是其父级的第一个p元素(父元素第一个p元素)</li>
+    <li>:last-of-type	p:last-of-type	选择每个p元素是其父级的最后一个p元素</li>
+    <li>:nth-of-type(n)	p:nth-of-type(2)	选择每个p元素是其父级的第二个p元素</li>
+  </div>
+
+  <s>12345</s>
+  <li>:before	s:before	在每个s元素之前插入内容(s内部)</li>
+  <li>:after	s:after	在每个s元素之后插入内容(s内部)</li>
+
+  <div id="add">add1 add2</div>
+  <script>
+    var el=document.getElementById('css');
+    console.log(el.style,'start')
+    //CSSStyleDeclaration {alignContent: "", alignItems: "", alignSelf: "", alignmentBaseline: "", all: "", …}
+    el.style.backgroundColor="red";
+    console.log(el.style,'end')
+    //CSSStyleDeclaration {0: "background-color", alignContent: "", alignItems: "", alignSelf: "", alignmentBaseline: "", all: "", …}
+
+    setTimeout(() => {
+      var sel=document.getElementById('add');
+      console.log(sel.className==='');//true
+      sel.className='add1 add2';
+      console.log(sel.classList);//DOMTokenList(2) ["add1", "add2", value: "add1 add2"]
+    }, 2000);
+  </script>
+</body>
+</html>
