@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>表单</title>
+</head>
+<body>
+  输入控件类型：
+  <li>email：输入email地址</li>
+  <input type="email">
+  <li>url：输入URL</li>
+  <input type="url">
+  <li>date：输入日期和时间</li>
+  <input type="date">
+  <li>number：输入数值</li>
+  <input type="number">
+  <li>range：滑动条</li>
+  <input type="range">
+  <li>search：搜索框</li>
+  <input type="search">
+  <li>tel：用于输入电话</li>
+  <input type="tel">
+  <li>color：选择颜色</li>
+  <input type="color">
+
+  <li>新的属性：</li>
+  <li>autocomplete：用于为text输入框添加一组建议的输入项，值为off/on</li>
+  <li>autofocus：元素自动获得焦点</li>
+  <input type="text" autocomplete="on" autofocus>
+  <li>form：对form标签外部的表单元素分组，值为form的id</li>
+  <li>min、max、step：用于在范围和数值的输入框中</li>
+  <input type="range" min="1" max="10" step="1">
+  <li>pattern：定义正则表达式以便验证输入的值,需要提交submit</li>
+  <li>placeholder：显示临时性提示信息</li>
+  <li>required：表示必填,需要提交submit</li>
+  <form action="">
+    <input type="text" required placeholder="请选择" pattern="[a-z]" title="输入一个小写字母">
+    <input type="submit" />
+  </form>
+  <div style="margin-top:30px;">form：对form标签外部的表单元素分组，值为form的id</div>
+  <form method="get" id="form1" action="myaction">
+    new-password或者off会禁用自动完成,firefox中autocomplete有作用，chrom中不起作用<input type="text" autocomplete="on" name="off">
+    First name: <input type="text" name="fname" /><br />
+    <input type="submit" value="提交" onclick='return false'/>
+  </form>
+  <p>下面的 "Last name" 字段位于 form 元素之外，但仍然是表单的一部分。</p>
+  Last name: <input type="text" name="lname" form="form1" />
+  <script>
+
+  </script>
+</body>
+</html>

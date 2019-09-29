@@ -30,14 +30,14 @@
 
   <pre style="font-size:15px;">
     <code class='javascript'>
-      如果内联元素有这个事件先执行内联事件再执行addEventListener事件。
+      如果内联元素有这个事件先执行内联事件再执行addEventListener(ie8及以下attachEvent)事件。
       document/element.addEventListener(event, function, useCapture)
       可选。布尔值，指定事件是否 在捕获或冒泡阶段执行。
       可能值：
       true - 事件句柄在捕获阶段执行
       false- 默认。事件句柄在冒泡阶段执行
 
-      document/element.removeEventListener(event, function, useCapture)
+      document/element.removeEventListener(event, function, useCapture)(ie8及以下detachEvent)
       可选。布尔值，指定移除事件句柄的阶段。
       可能值：
       true - 事件句柄在捕获阶段移除
