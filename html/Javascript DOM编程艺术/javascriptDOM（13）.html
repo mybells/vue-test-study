@@ -4,48 +4,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>jquery animate</title>
+  <title>jquery $.when</title>
 </head>
 <body>
-    $(selector).animate({params},speed,callback);
-    必需的 params 参数定义形成动画的 CSS 属性。
-    可选的 speed 参数规定效果的时长。它可以取以下值："slow"、"fast" 或毫秒。
-    可选的 callback 参数是动画完成后所执行的函数名称。
-    <button id='id'>animate</button>
-    <button id='id2'>slideDown,slideUp,slideToggle</button>
-    <button id='id3'>fadeIn,fadeOut,fadeToggle,fadeTo</button>
-    <button id='id4'>hide,show,toggle</button>
-  <div id="sss" style="position:relative;left:0;color:red;height:200px;width:200px;background-color: red;"></div>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js'></script>
 
   <script>
-// jQuery 动画
-    $("#id").click(function(e){
-      $('#sss').animate({left:100,height:'toggle'},'slow',function(){
-        $('#sss').css('backgroundColor','yellow')
-      });
+    $.when($.ajax({
+      url: "https://cesiumjs.org/releases/1.60/Build/Cesium/Cesium.js",
+      title:'data1'
+    }),$.ajax({
+      url: "./example.txt",
+      title:'data2'
+    })).done(function(data1,data2){
+      console.log(data1)//第一个请求的返回值
+      console.log(data2)//第二个请求的返回值
+    }).done(function(data1,data2){
+      console.log(data1)//第一个请求的返回值
+      console.log(data2)//第二个请求的返回值
+    }).fail(function(){
+      console.log('2个ajax有请求失败');
     })
 
-// jQuery 滑动
-    // $(selector).slideUp(speed,callback);
-    $("#id2").click(function(e){
-      $('#sss').slideToggle('slow');
+
+    $.when($.ajax({
+      url: "https://cesiumjs.org/releases/1.60/Build/Cesium/Cesium.js",
+      title:'data1'
+    }),$.ajax({
+      url: "./example.txt",
+      title:'data2'
+    })).then(function(data1,data2){
+      console.log(data1)//第一个请求的返回值
+      console.log(data2)//第二个请求的返回值
+    },function (error){
+      console.log(error)
+    }).then(function(data1,data2){
+      console.log(data1)//undefined
+      console.log(data2)//undefined
     })
 
-// jQuery 淡入淡出
-    // $(selector).fadeToggle(speed,callback);
-    $("#id3").click(function(e){
-      $('#sss').fadeToggle('slow');
-    })
-
-// jQuery 隐藏/显示
-    // $(selector).toggle(speed,callback);
-    $("#id4").click(function(e){
-      $('#sss').toggle('slow');
-    })
-
-// jQuery 停止动画
-    // $("#panel").stop();
+    //done和then区别是then可以将可以把done()和fail()合在一起写，包括成功和失败的回调函数。done中回调函数只能是成功
   </script>
 </body>
 </html>
