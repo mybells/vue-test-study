@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CDN jquery</title>
+</head>
+<body>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js'></script>
+  <script>
+  !window.jQuery && document.write(unescape("%3Cscript src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.js'%3E%3C/script%3E"))
+  </script>
+
+
+  <div>内容分发网络（CDN，Content Delivery Network）,CDN的底层通过地理位置最近、速度最快的服务器提供相应的文件。</div>
+  <div>CDN不可以用时，从本地服务器下载相应文件：先检测相应对象是否存在，不存在就添加加载本地文件的script标签</div>
+  <div id='id'>id</div>
+  <p class="classFoo">p标签</p>
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+  <li>4</li>
+  <li>5</li>
+  <div>
+    <li>6</li>
+  </div>
+  <div>
+    <input type="reset">
+  </div>
+
+  <div id="sss">
+    <a href="">2</a>
+    <img src="" alt="">
+    <img src="" alt="">
+  </div>
+
+
+  <div class="abc" title='a'>q</div>
+  <div class="abc" title='b'>w</div>
+  <div class="abc" title='c'>e</div>
+  <script>
+    document.write(window.jQuery,1)
+    console.log(document.getElementsByClassName('classFoo')[0]===$('.classFoo')[0]);//true
+    console.log(document.getElementById('id')===$('#id')[0]);//true
+    var s='div'
+    $(s+' li')
+
+
+/* removeClass/addClass */
+    $('p').removeClass('classFoo').addClass('classBar');
+    $('p').css('color','red');
+    $('p').hide()
+    $('p').show()
+
+
+/* each */
+    $('li').each(function(i){
+      console.log(i,typeof this,this.innerHTML)//0,'object',1
+    })
+
+
+/* filter 只返回第一个满足过滤条件的jquery对象*/
+    var t=$('div').filter(function(i){
+      //this是当前操作的元素， 这里写法就是选择当前元素下素有的 li标签。
+      return ($('li',this).length==1)
+    })
+    console.log(t[0])
+    console.log($('img',document.getElementById('sss')));//#sss下的img，jQuery.fn.init(2) [img, img, prevObject: jQuery.fn.init(1)]
+
+
+/* 选择器 */
+    $('*')//选择所有元素
+    $('tag[attr*=value]')//选择所有attr属性值中包含value的tag元素
+    $('tag[attr^=value]')//选择所有attr属性值中以value开头的tag元素
+    $('tag[attr*=value]')//选择所有attr属性值中以value结尾的tag元素
+    $('tag[attr!=value]')
+    $('tag:empty')//选择所有没有子元素的tag元素
+    $('tag:not(s)')//选择与选择器s不匹配的所有tag元素
+
+    $('tag:even')//偶tag元素
+    $('tag:odd')
+    $('tag:eq(0)')//第一个tag元素
+    $('tag:gt(n)')//tag元素中，索引值大于n的tag元素
+    $('tag:lt(n)')//
+    $('tag:first')===$('tag:eq(0)')
+    $('tag:last')
+
+    $('tag:parent')
+    $('tag:contains("test")')//选择匹配元素集中包含指定文本的所有元素
+    $('tag:visible')
+    $('tag:hidden')
+
+    $(':input')//所有文本字段
+    $(':reset')//选择所有重置按钮（type='reset')
+    console.log($(':input')[0]);//<input type="reset">
+
+
+/* DOM */
+    $('<div style="color:red">apppendTo</div>').appendTo(document.body)//创建元素
+    $('#id').attr('id')//id
+    $('#id').text()//id
+
+    console.log($('.abc').attr('title'))//a 只返回第一个title属性值
+    console.log($('.abc').text())//qwe //返回所有text相加
+
+    $('#id').appendTo(document.body)//将#id元素移动到body中
+    $('#id').clone().appendTo(document.body)//将#id元素复制到body中
+  </script>
+</body>
+</html>

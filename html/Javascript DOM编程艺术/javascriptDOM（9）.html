@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>form对象</title>
+</head>
+<body>
+  onfocus事件会在用户通过按Tab键或单击表单字段时被触发。
+  <form action="" id="formid">
+    <input type="text" name="x1" id="y1" value="123">
+    <input type="text" name="x2" id="y2">
+    <input type="text" name="x3" id="y3">
+    <input type="text" name="x4" id="y4">
+    <input type="submit" />
+  </form>
+  <script>
+    console.log(document.forms)
+    // HTMLCollection(1)
+    //   0: form#formid
+    var el=document.getElementById('formid');
+    console.log(el.elements.length)//5
+    console.log(el.elements);
+    // HTMLFormControlsCollection(5) [input#y1, input#y2, input#y3, input#y4, input, y1: input#y1, x1: input#y1, y2: input#y2, x2: input#y2, y3: input#y3, …]
+    //   0: input#y1
+    //   1: input#y2
+    //   2: input#y3
+    //   3: input#y4
+    //   4: input
+    //   length: 5
+    //   x1: input#y1
+    //   x2: input#y2
+    //   x3: input#y3
+    //   x4: input#y4
+    //   y1: input#y1
+    //   y2: input#y2
+    //   y3: input#y3
+    //   y4: input#y4
+    //   __proto__: HTMLFormControlsCollection
+    console.log(el.elements[0].value);//123
+  </script>
+</body>
+</html>

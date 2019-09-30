@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>jquery处理事件</title>
+</head>
+<body>
+  <div id="id">click</div>
+
+  <div id="xxx"></div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js'></script>
+
+  <script>
+    //JQuery的ready函数与JS的onload
+    //DOM初始化完成，立即调用ready（后面的代码会先执行）.先执行js，再ready最后onload
+    $(document).ready(function(){
+      console.log(1)
+      alert('ready')
+    })
+    //或者这样写：
+    function s(){console.log(2)}
+    $(s);
+
+    $(function(){console.log(3)})
+    console.log('y')
+    //y123
+
+
+    // onload 这个方法会等到页面所有内容加载完毕后才会触发
+    window.onload=function() {
+      alert("load");
+    };
+
+    alert('js')
+    $('#id').click((event)=>{
+      console.log(this===window)//true,这是因为箭头函数导致的this绑定到window上
+    })
+    $('#id').click(function(event){
+      console.log(this===window)//false
+      console.log($(this).html())//click
+    })
+
+    $('#id').click()//javascript 模拟的鼠标点击事件,相当于点击了元素，是个动作,相当于document.getElementById("id").click()
+    console.log(document.getElementById("id").click()===$('#id')[0].click())//true
+
+/* load */
+    //$(expression).load(url,params,callback)//把URL的结果加载到对应得DOM元素中
+    $('#xxx').load('./example.txt',function(responseText,status){
+      if(status==='success'){}
+      if(status==='error'){}
+    })
+
+    // //1.当前文件中要插入的地方使用此结构：
+    // <div class="include" file="***.html"></div>
+
+    // //2.***.html中放入内容，用html格式仅仅因为会有编辑器的书写辅助。。
+
+    // //3.代码：
+    // $(".include").each(function() {
+    //     if (!!$(this).attr("file")) {
+    //         var $includeObj = $(this);
+    //         $(this).load($(this).attr("file"), function(html) {
+    //             $includeObj.after(html).remove(); //加载的文件内容写入到当前标签后面并移除当前标签
+    //         })
+    //     }
+    // });
+  </script>
+</body>
+</html>
