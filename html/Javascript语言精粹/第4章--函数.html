@@ -12,6 +12,7 @@
   3.一个函数总会返回一个值。如果没有指定返回值，就会返回undefined。<br>
   4.内部函数在函数外被调用执行时，可以访问所在的词法作用域，这种状态是闭包。<br>
   5.es6已经支持尾调用优化了，尾递归介绍（http://www.ruanyifeng.com/blog/2015/04/tail-call.html）
+  6.原型链图（后面有时间补上）
   <script>
 /* constructor */
     function name(params) {
@@ -80,6 +81,7 @@
       console.log(Object.d)//d
 
       // 内建对象原型关系：
+      // Object->Function->Object
       // Number->Function->Object
       // String->Function->Object
       // Boolean->Function->Object
@@ -88,6 +90,15 @@
       // Date->Function->Object
 
       // Math->Object
+
+
+      //Date.prototype===new Date().__proto__//true
+      // new Date().__proto__
+      // {constructor: ƒ, toString: ƒ, toDateString: ƒ, toTimeString: ƒ, toISOString: ƒ, …}
+      // new Date().__proto__.toSring
+      // undefined
+      // Date.prototype.toString
+      // ƒ toString() { [native code] }
   </script>
 </body>
 </html>
