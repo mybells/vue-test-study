@@ -93,13 +93,16 @@
       // Math->Object
 
 
-      //Date.prototype===new Date().__proto__//true
-      // new Date().__proto__
+      Date.prototype===new Date().__proto__//true
       // {constructor: ƒ, toString: ƒ, toDateString: ƒ, toTimeString: ƒ, toISOString: ƒ, …}
-      // new Date().__proto__.toSring
-      // undefined
-      // Date.prototype.toString
+
+      new Date().__proto__.toString===Date.prototype.toString//true
       // ƒ toString() { [native code] }
+      function xxx(params) {
+
+      }
+      xxx.prototype.ooo='0';
+      console.log(new xxx().__proto__.ooo===xxx.prototype.ooo);//true
   </script>
 </body>
 </html>
