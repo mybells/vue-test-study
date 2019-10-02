@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>对象</title>
+</head>
+<body>
+  <script>
+/* 对象属性名可以包括空字符串的任意字符串 */
+    var obj={
+      undefined:undefined,
+      '':1,
+      ' ':2,
+      's-s':3
+      //s-s:2//报错，属性名中不能有连接符（-）
+    }
+    console.log(obj['undefined'])//undefined
+    console.log(obj.undefined)//undefined
+    console.log(obj['s-s'])//3
+    console.log(obj[' '])//2
+    console.log(obj[''])//1
+/* delete运算符可以删除对象属性，但不会触及原型链中的任何对象 */
+  </script>
+</body>
+</html>
