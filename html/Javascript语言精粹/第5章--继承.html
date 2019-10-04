@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>继承 </title>
+</head>
+<body>
+  <script>
+/* Object.create */
+      function ppp(){
+        var obj={a:1};
+        var old=obj;
+        obj.a=2;
+        obj=Object.create(obj)
+        console.log(obj,old);//{__proto__:{a:2}},{a:2}
+      }
+      ppp()
+  </script>
+</body>
+</html>

@@ -10,10 +10,10 @@
   1.一般来说，编程就是将一组需求分解成一组函数与数据结构的技能。<br>
   2.由互相关联的原型组成的结构就是原型链。<br>
   3.一个函数总会返回一个值。如果没有指定返回值，就会返回undefined。<br>
-  4.内部函数在函数外被调用执行时，可以访问所在的词法作用域，这种状态是闭包。<br>
+  4.内部函数或对象在函数外被调用执行时，可以访问所在的词法作用域，这种状态是闭包。<br>
   5.es6已经支持尾调用优化了，尾递归介绍（http://www.ruanyifeng.com/blog/2015/04/tail-call.html）<br>
   6.原型链图
-  <img style="display: block" src="https://images2015.cnblogs.com/blog/1019648/201609/1019648-20160902160622996-392244285.png" alt="">
+  <img style="display: block" src="./image/原型链.png" alt="">
   <script>
 /* constructor */
     function name(params) {
@@ -103,6 +103,50 @@
       }
       xxx.prototype.ooo='0';
       console.log(new xxx().__proto__.ooo===xxx.prototype.ooo);//true
+
+
+
+/* 模块 */
+      //产生了一个闭包
+      function module(){
+        var mo='mo'
+        return {
+          x:1,
+          y:mo,//'mo'
+          that:function (params) {
+            console.log(this)
+          },
+          _this:this//Window
+        }
+        // return function(){
+        //   console.log(this)//Window
+        // }
+      }
+      var mo=module();
+      // mo()//Window
+      mo.that()//{x:1,y:'mo',that:function(params){}}
+      console.log(mo)
+
+
+/* A.prototype=new B(); */
+      function zzz(){
+        this.name='a'
+      }
+      zzz.prototype.getname=function(){
+        return this.name;
+      }
+      function ttt(){
+        this.name='ttt'
+      }
+      ttt.prototype.getnamex=function(){
+        return this.name;
+      }
+      zzz.prototype=new ttt();
+      console.log(zzz);
+      // ttt {name: "ttt"}
+      //   name: "ttt"
+      //   __proto__:
+      //   getnamex: ƒ ()
   </script>
 </body>
 </html>
