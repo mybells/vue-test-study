@@ -22,6 +22,9 @@
     //如果只有一个量词，表示趋向于进行贪婪性匹配，即匹配尽可能多的副本直至达到上限。
     //如果这个量词附加一个后缀?，则表示趋向于非贪婪性匹配，即只匹配必要的副本就好。
     //一般情况下最好坚持使用贪婪性匹配。
+
+    //match无/g、matchAll、exec、split可以像以下方式进行捕获（先返回完全匹配成功的文本做为数组第一项，然后将捕获的填充到数组后面）
+    //matchAll返回一个迭代器，有无/g都返回捕获的内容，match中/g全局匹配不返回捕获组中的内容
     var re = /quick\s(brown).+?(jumps)/i;//+后面的？代表非贪婪（匹配尽量少的字符）
     var result = re.exec('The Quick Brown Fox Jumps Over The Lazy Dog');
     console.log(result)//["Quick Brown Fox Jumps", "Brown", "Jumps", index: 4, input: "The Quick Brown Fox Jumps Over The Lazy Dog", groups: undefined]

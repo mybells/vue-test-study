@@ -9,7 +9,37 @@
 <body>
 
   <script>
+/* array.concat(item...) */
+    //产生一个新数组，是浅复制。如果item是一个数组，那么它的每个元素会被分别添加。
+    var a=['a','b','c'];
+    var b=['x','y','z'];
+    var c=a.concat(b,true);
+    console.log(c)//['a','b','c','x','y','z',true];
 
+/* array.join(separator) */
+    // 默认的separator是逗号
+
+/* array.pop() */
+    //shift通常比pop慢的多
+    // 移除array中的最后一个元素并返回该元素，如果array是empty返回undefined
+
+/* array.push(item...) */
+    var a=['a','b','c'];
+    var b=['x','y','z'];
+    var c=a.push(b,true);
+    console.log(a)//['a','b','c',['x','y','z'],true];
+    console.log(c)//5
+
+/* array.reverse() */
+    var a=['a','b'];
+    var b=a.reverse()
+    //a和b都是['b','a']
+
+/* array.sort(comparefn) */
+    //比较函数接受两个参数，如果两个参数相等返回0，如果第1个参数应该排列在前面，则返回一个负数，如果第2个参数应该排列在前面，则返回一个正数。
+    typeof 0 < typeof 'a' //true
+    'number' < 'string' //true
+    'n' < 's' //true
   </script>
 </body>
 </html>
