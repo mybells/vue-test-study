@@ -30,6 +30,12 @@
     console.log(a)//['a','b','c',['x','y','z'],true];
     console.log(c)//5
 
+/* array.unshift(item...) */
+    var a=['a','b'];
+    var r=a.unshift('?','@');
+    // a是['?','@','a','b'];
+    // r是4
+
 /* array.reverse() */
     var a=['a','b'];
     var b=a.reverse()
@@ -40,6 +46,30 @@
     typeof 0 < typeof 'a' //true
     'number' < 'string' //true
     'n' < 's' //true
+
+
+/* string.charAt(pos) */
+    //返回在pos位置的字符。如果pos小于0或大于等于字符串的长度，会返回空字符串。
+    var char='abc'.charAt(5);
+    console.log(char);
+
+/* string.charCodeAt(pos) */
+    //返回pos位置的字符的字符码位。如果pos小于0或大于等于字符串长度，会返回NaN。
+
+/* string.indexOf(searchString,position) */
+    // position从指定位置开始查找
+
+/* string.localeCompare(that) */
+    // 比较两个字符串，如果string小于thar那么结果为负数，相同返回0。类似于sort
+    console.log('a'.localeCompare('b'));//-1
+
+/* split */
+    var f='|a|b|c|'.split(/\|/);
+    console.log(f)//["", "a", "b", "c", ""]
+
+/* string.fromCharCode(char...) */
+    var s=String.fromCharCode(67,65,66);
+    console.log(s);//CAB
   </script>
 </body>
 </html>

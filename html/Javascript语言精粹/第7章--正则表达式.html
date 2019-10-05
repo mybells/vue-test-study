@@ -35,6 +35,8 @@
     var results = re.exec('The Quick Brown Fox Jumps Over The Lazy Dog');
     console.log(results)//["Quick Brown Fox Jumps", "Brown", index: 4, input: "The Quick Brown Fox Jumps Over The Lazy Dog", groups: undefined]
 
+    //如果exec中带有g标识。查找不是从这个字符串的起始位置开始，而是从refexp.lastIndex(初始值为0)位置开始。如果匹配成功那么lastIndex将被设置为该匹配后的第一个字符位置。不成功的匹配会重置lastIndex为0
+
 
 /* str.match(regexp) */
     // 如果使用g标志，则将返回与完整正则表达式匹配的所有结果（Array），但不会返回捕获组，或者未匹配 null。
@@ -96,7 +98,11 @@
   var newstr = str.replace(re, "$2, $1");
   // Smith, John
   console.log(newstr);
-
+  //$$代表替换对象为$
+  //$&代表整个匹配的文本
+  //$number代表分组捕获的文本
+  //$`代表匹配之前的文本
+  //$'代表匹配之后的文本
 
 
   'abc'.repeat()//""
@@ -128,6 +134,9 @@
   // 一个捕获型分组是一个被包围在括号中的正则表达式分支
   // 非捕获型
   // ?:前缀，非捕获型分组仅做简单的匹配，并不会捕获所匹配的文本
+
+
+/* search会忽略g标识，且没有position参数 */
   </script>
 </body>
 </html>
