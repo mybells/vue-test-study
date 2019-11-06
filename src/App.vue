@@ -54,8 +54,23 @@ export default {
     npmPublish,
     ComponentA
   },
+  data() {
+    return {
+      list:[1,2,3]
+    }
+  },
   created() {
-    console.log(process.env.NODE_ENV)
+    console.log(process.env.NODE_ENV);
+    this.list.map(function(item) {
+      console.log(this)
+      //VueComponent {_uid: 23, _isVue: true, $options: {…}, _renderProxy: Proxy, _self: VueComponent, …}
+      //VueComponent {_uid: 23, _isVue: true, $options: {…}, _renderProxy: Proxy, _self: VueComponent, …}
+      //VueComponent {_uid: 23, _isVue: true, $options: {…}, _renderProxy: Proxy, _self: VueComponent, …}
+    },this)
+    this.list.map(function(item) {
+      console.log(this)
+      //undefined
+    })
   },
   mounted() {
   },
