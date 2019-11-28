@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .parent{
+      margin:100px;
+      height:300px;
+      width:300px;
+      background: cornflowerblue;
+      overflow: auto;
+    }
+    .child{
+      position:fixed;
+      height:50px;
+      width:50px;
+      margin-top:10px;
+      background: cyan;
+    }
+
+
+
+    .box {
+      background: red;
+      width: 100px;
+      height: 100px;
+      margin: 20px;
+      color: white;
+    }
+    #one {
+      position: fixed;
+    }
+    .outer {
+      width: 500px;
+      height: 300px;
+      overflow: scroll;
+      padding-left: 150px;
+    }
+  </style>
+</head>
+<body>
+  <div class="parent">
+    <div class="child">fixed定位</div>
+    <div style="position: absolute;top:20px;padding:10px;background: yellow;">
+      position: absolute因为有top,祖先元素都是static默认定位，所以相对html元素上下定位。<br>
+      没有left/right，所以相对父元素左右定位。
+    </div>
+    <div style="height:500px;">
+      <span>hellohellohellohello</span>
+      <div style="position: sticky;top:0;left:0;margin-left:30px;background: slateblue;">
+        sticky定位，须指定 top, right, bottom 或 left 四个阈值其中之一，才可使粘性定位生效。否则其行为与相对定位相同。
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="outer">
+    position:fixed;和position:absolute;这两种定位时，没有top/bottom时相对于父元素上下定位，没有left/right时相对于父元素左右定位，可用margin定位。
+    如果有top/bottom：postion:fixed;相对于浏览器视口上下定位。如果有left/right：fixed相对于浏览器视口左右定位。<br>
+    如果有top/bottom：postion:absolute;相对于最近的非 static 祖先元素上下定位(啥都不写也是static默认定位)。如果有left/right：fixed相对于最近的非 static 祖先元素左右定位。<br>
+    <div class="box" id="one">此元素相对于.outer固定fixed定位</div>
+    <div class="box" style="position: absolute;margin-left:90px;background: yellowgreen;">
+      此元素相对于.outer固定absolute定位,此时有left/right则相对html左右定位。
+    </div>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam congue tortor eget pulvinar lobortis.
+      Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nam ac dolor augue.
+      Pellentesque mi mi, laoreet et dolor sit amet, ultrices varius risus. Nam vitae iaculis elit.
+      Aliquam mollis interdum libero. Sed sodales placerat egestas. Vestibulum ut arcu aliquam purus viverra dictum vel sit amet mi.
+      Duis nisl mauris, aliquam sit amet luctus eget, dapibus in enim. Sed velit augue, pretium a sem aliquam, congue porttitor tortor.
+      Sed tempor nisl a lorem consequat, id maximus erat aliquet. Sed sagittis porta libero sed condimentum.
+      Aliquam finibus lectus nec ante congue rutrum. Curabitur quam quam, accumsan id ultrices ultrices, tempor et tellus.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam congue tortor eget pulvinar lobortis.
+      Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nam ac dolor augue.
+      Pellentesque mi mi, laoreet et dolor sit amet, ultrices varius risus. Nam vitae iaculis elit.
+      Aliquam mollis interdum libero. Sed sodales placerat egestas. Vestibulum ut arcu aliquam purus viverra dictum vel sit amet mi.
+      Duis nisl mauris, aliquam sit amet luctus eget, dapibus in enim. Sed velit augue, pretium a sem aliquam, congue porttitor tortor.
+      Sed tempor nisl a lorem consequat, id maximus erat aliquet. Sed sagittis porta libero sed condimentum.
+      Aliquam finibus lectus nec ante congue rutrum. Curabitur quam quam, accumsan id ultrices ultrices, tempor et tellus.
+    </p>
+  </div>
+  <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/position">https://developer.mozilla.org/zh-CN/docs/Web/CSS/position</a>
+</body>
+</html>

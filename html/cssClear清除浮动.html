@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .wrapper{
+      border:1px solid black;
+      padding:10px;
+    }
+    /* .wrapper:after{
+      content:'';
+      display:block;
+      clear:both;
+    } *//* 这种可以清除浮动 */
+    /* .wrapper{
+      overflow:auto;
+    } *//* 这种可以清除浮动,创建了新的块格式化上下文（Block Formatting Context，BFC） */
+    .both {
+      border: 1px solid black;
+      clear: both;
+    }
+    .black {
+      float: left;
+      margin: 0;
+      background-color: black;
+      color: #fff;
+      width:20%;
+    }
+    .red {
+      float: right;
+      margin: 0;
+      background-color: pink;
+      width:20%;
+    }
+    p {
+      width: 45%;
+    }
+  </style>
+</head>
+<body>
+  块格式化上下文（Block Formatting Context，BFC） 是Web页面的可视化CSS渲染的一部分，是块盒子的布局过程发生的区域，也是浮动元素与其他元素交互的区域。
+  <div class="wrapper">
+    <p class="black">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus sit amet diam. Duis mattis varius dui. Suspendisse eget dolor. Fusce pulvinar lacus ac dui.</p>
+    <p class="red">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus sit amet diam. Duis mattis varius dui. Suspendisse eget dolor.</p>
+    <p class="both">This paragraph clears both.</p>
+  </div>
+</body>
+</html>
