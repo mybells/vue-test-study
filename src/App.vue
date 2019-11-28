@@ -27,6 +27,9 @@
 
     <div class="title">7.***********vueloder自定义块***********</div>
     <ComponentA></ComponentA>
+
+    <div class="title">8.***********$set***********</div>
+    <vueSet></vueSet>
   </div>
 </template>
 
@@ -43,6 +46,7 @@ import importAsync from './import动态组件/index.vue'
 import cssModules from './cssModule/cssmodule与scoped.vue'
 import npmPublish from './publishNpm/index.vue'
 import ComponentA from './vueloder自定义块/ComponentA.vue'
+import vueSet from './other/vueSet.vue'
 export default {
   name: 'App',
   components: {
@@ -52,7 +56,8 @@ export default {
     importAsync,
     cssModules,
     npmPublish,
-    ComponentA
+    ComponentA,
+    vueSet
   },
   data() {
     return {
