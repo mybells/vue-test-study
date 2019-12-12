@@ -30,6 +30,9 @@
 
     <div class="title">8.***********$set***********</div>
     <vueSet></vueSet>
+
+    <div class="title">8.***********setTimeout,push,setImmediate,requestanimationframe***********</div>
+    <moreData></moreData>
   </div>
 </template>
 
@@ -47,6 +50,7 @@ import cssModules from './cssModule/cssmodule与scoped.vue'
 import npmPublish from './publishNpm/index.vue'
 import ComponentA from './vueloder自定义块/ComponentA.vue'
 import vueSet from './other/vueSet.vue'
+import moreData from './other/moreData.vue'
 export default {
   name: 'App',
   components: {
@@ -57,22 +61,23 @@ export default {
     cssModules,
     npmPublish,
     ComponentA,
-    vueSet
+    vueSet,
+    moreData
   },
   data() {
     return {
-      list:[1,2,3]
+      list: [1, 2, 3]
     }
   },
   created() {
     console.log(process.env.NODE_ENV);
-    this.list.map(function(item) {
+    this.list.map(function (item) {
       console.log(this)
       //VueComponent {_uid: 23, _isVue: true, $options: {…}, _renderProxy: Proxy, _self: VueComponent, …}
       //VueComponent {_uid: 23, _isVue: true, $options: {…}, _renderProxy: Proxy, _self: VueComponent, …}
       //VueComponent {_uid: 23, _isVue: true, $options: {…}, _renderProxy: Proxy, _self: VueComponent, …}
-    },this)
-    this.list.map(function(item) {
+    }, this)
+    this.list.map(function (item) {
       console.log(this)
       //undefined
     })
