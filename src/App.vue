@@ -36,6 +36,7 @@
 
     <div class="title">9.***********在不同vue文件中import同一个js的影响***********</div>
     <importjs></importjs>
+    <importjs2></importjs2>
   </div>
 </template>
 
@@ -55,6 +56,7 @@ import ComponentA from './vueloder自定义块/ComponentA.vue'
 import vueSet from './other/vueset.vue'
 import moreData from './other/moreData.vue'
 import importjs from './importjstest/importjstest.vue'
+import importjs2 from './importjstest/importjs2.vue'
 export default {
   name: 'App',
   components: {
@@ -67,7 +69,8 @@ export default {
     ComponentA,
     vueSet,
     moreData,
-    importjs
+    importjs,
+    importjs2
   },
   data() {
     return {
