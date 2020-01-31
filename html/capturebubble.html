@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>事件处理机制</title>
+</head>
+<body >
+  <a href="www.baidu.com" onclick="abtn(event,this)" id="abc">preventDefault</a>
+  <div id="a" style="height:300px;width:300px;background:yellow">a
+    <div id="b" style="height:200px;width:200px;background:red">b
+      <div id="c" style="height:100px;width:100px;background:aquamarine">c</div>
+    </div>
+  </div style="height:200px;width:200px;background:red">
+
+  <script>
+    function abtn(e,_this){
+      debugger;
+      console.log(_this===document.getElementById('abc'))//true
+      e.preventDefault();//阻止默认事件
+    }
+    /* addEventListener默认冒泡事件false */
+    document.getElementById('a').addEventListener('click',function(e){
+      debugger;
+      console.log('a')
+    },false)
+    document.getElementById('b').addEventListener('click',function(e){
+      debugger;
+      console.log('b')
+      // e.stopPropagation();
+
+    },true)//
+    document.getElementById('c').addEventListener('click',function(e){
+      debugger;
+      console.log('c')
+    },true)
+    /* 点击c，先捕获事件(从document到目标事件addEventListener为true)-》目标事件-》冒泡事件 */
+    /* 先触发a点击事件再触发目标事件c最后触发冒泡事件b */
+  </script>
+</body>
+
+</html>
