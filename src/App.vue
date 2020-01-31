@@ -33,6 +33,13 @@
 
     <div class="title">8.***********setTimeout,push,setImmediate,requestanimationframe***********</div>
     <moreData></moreData>
+
+    <div class="title">9.***********在不同vue文件中import同一个js的影响***********</div>
+    <importjs></importjs>
+    <importjs2></importjs2>
+
+    <div class="title">10.***********v-show是否缓存(会缓存)***********</div>
+    <vshow></vshow>
   </div>
 </template>
 
@@ -49,8 +56,11 @@ import importAsync from './import动态组件/index.vue'
 import cssModules from './cssModule/cssmodule与scoped.vue'
 import npmPublish from './publishNpm/index.vue'
 import ComponentA from './vueloder自定义块/ComponentA.vue'
-import vueSet from './other/vueSet.vue'
+import vueSet from './other/vueset.vue'
 import moreData from './other/moreData.vue'
+import vshow from './other/vshow.vue'
+import importjs from './importjstest/importjstest.vue'
+import importjs2 from './importjstest/importjs2.vue'
 export default {
   name: 'App',
   components: {
@@ -62,7 +72,10 @@ export default {
     npmPublish,
     ComponentA,
     vueSet,
-    moreData
+    moreData,
+    importjs,
+    importjs2,
+    vshow
   },
   data() {
     return {
