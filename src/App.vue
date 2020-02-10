@@ -40,6 +40,9 @@
 
     <div class="title">10.***********v-show是否缓存(会缓存)***********</div>
     <vshow></vshow>
+
+    <div class="title">11.***********使用render***********</div>
+    <render></render>
   </div>
 </template>
 
@@ -61,6 +64,7 @@ import moreData from './other/moreData.vue'
 import vshow from './other/vshow.vue'
 import importjs from './importjstest/importjstest.vue'
 import importjs2 from './importjstest/importjs2.vue'
+import render from './render/render.vue'
 export default {
   name: 'App',
   components: {
@@ -75,7 +79,8 @@ export default {
     moreData,
     importjs,
     importjs2,
-    vshow
+    vshow,
+    render
   },
   data() {
     return {
