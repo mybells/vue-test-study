@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .dropzone{
+      height:200px;
+      width:200px;
+    }
+    .x1{
+      background: yellow;
+    }
+    .x2{
+      background: yellowgreen;
+    }
+    .x3{
+      background: red;
+    }
+    .x4{
+      background: skyblue;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="dropzone x1" draggable="true">
+      该节点可拖拉
+  </div>
+  <div class="dropzone x2"></div>
+  <div class="dropzone x3"></div>
+  <div class="dropzone x4"></div>
+  <script>
+    // 被拖拉节点
+    var dragged;
+
+    document.addEventListener('dragstart', function (event) {
+      // 保存被拖拉节点
+      dragged = event;
+      // 被拖拉节点的背景色变透明
+      event.target.style.opacity = 0.3;
+    }, false);
+
+    document.addEventListener('dragend', function (event) {
+      // 被拖拉节点的背景色恢复正常
+      event.target.style.opacity = '';
+    }, false);
+
+    document.addEventListener('dragover', function (event) {
+      // 防止拖拉效果被重置，允许被拖拉的节点放入目标节点
+      event.preventDefault();
+    }, false);
+
+    document.addEventListener('dragenter', function (event) {
+      // 目标节点的背景色变紫色
+      // 由于该事件会冒泡，所以要过滤节点
+      event.target.style.background = 'purple';
+    }, false);
+
+    document.addEventListener('dragleave', function (event) {
+      // 目标节点的背景色恢复原样
+        event.target.style.background = '';
+    }, false);
+
+    document.addEventListener('drop', function (event) {
+      // 防止事件默认行为（比如某些元素节点上可以打开链接），
+      event.preventDefault();
+      // 恢复目标节点背景色
+      event.target.style.background = '';
+      // 将被拖拉节点插入目标节点
+      debugger;
+      dragged.clientX=event.clientX;
+      dragged.clientY=event.clientY;
+      dragged.target.parentNode.removeChild(dragged.target);
+      event.target.appendChild(dragged.target);
+    }, false);
+  </script>
+</body>
+
+</html>
