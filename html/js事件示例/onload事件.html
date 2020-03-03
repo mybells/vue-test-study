@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.js'></script>
+</head>
+<body>
+  <div style="height:1200px;"></div>
+  <script>
+    window.addEventListener('beforeunload', function (event) {
+      event.returnValue = '你确定离开吗？';
+    });
+    window.addEventListener('unload', function(event) {
+      console.log('文档将要卸载');
+    });
+    document.addEventListener('DOMContentLoaded', function (event) {
+      console.log('DOM生成');
+    });
+    window.addEventListener('load', function(event) {
+      console.log('所有资源都加载完成');
+    });
+    document.addEventListener('fullscreenchange', function (event) {
+      console.log(document.fullscreenElement);
+    });
+
+    /* 剪贴板事件 */
+    document.addEventListener('copy', function (e) {//cut、paste
+      e.clipboardData.setData('text/plain', 'Hello, world!');
+      e.clipboardData.setData('text/html', '<b>Hello, world!</b>');
+      e.preventDefault();
+    });
+    document.addEventListener('paste', function (e) {//cut、paste
+      let text=e.clipboardData.getData('text/html');
+      document.body.innerHTML=text;
+      e.preventDefault();
+    });
+
+    window.addEventListener('scroll', _.throttle(function(e){
+      console.log('scroll')
+    }, 1000));
+
+    window.onerror = function (message, source, lineno, colno, error) {
+      console.log(message)
+    }
+
+    /* 鼠标右键菜单 */
+    document.oncontextmenu = function () {
+      return false;
+    };
+  </script>
+</body>
+</html>
