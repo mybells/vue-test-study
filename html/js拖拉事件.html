@@ -90,6 +90,7 @@
     drop.addEventListener('dragover', function (event) {
       // 防止拖拉效果被重置，允许被拖拉的节点放入目标节点
       event.preventDefault();
+      event.dataTransfer.dropEffect = 'copy';
     }, false);
 
     drop.addEventListener('dragleave', function (event) {
