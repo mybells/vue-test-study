@@ -6,75 +6,111 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
-    .dropzone{
-      height:200px;
-      width:200px;
+    .all {
+      display: flex;
+      height: -webkit-fill-available;
     }
-    .x1{
-      background: yellow;
-    }
-    .x2{
-      background: yellowgreen;
-    }
-    .x3{
-      background: red;
-    }
-    .x4{
+
+    .drag {
+      flex: 1;
+      position: relative;
       background: skyblue;
+    }
+
+    .dragdiv {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 200px;
+      width: 200px;
+      background: gold;
+    }
+
+    .drop {
+      flex: 1;
+      position: relative;
+      background: yellowgreen;
     }
   </style>
 </head>
 
 <body>
-  <div class="dropzone x1" draggable="true">
-      该节点可拖拉
+  <div class="all">
+    <div class="drag">
+      <div class="dragdiv" draggable="true">
+        该节点可拖拉
+      </div>
+    </div>
+    <div class="drop"></div>
   </div>
-  <div class="dropzone x2"></div>
-  <div class="dropzone x3"></div>
-  <div class="dropzone x4"></div>
   <script>
     // 被拖拉节点
     var dragged;
+    var drag = document.querySelector('.drag');
+    var drop = document.querySelector('.drop');
+    var dragdiv = document.querySelector('.dragdiv');
 
-    document.addEventListener('dragstart', function (event) {
-      // 保存被拖拉节点
-      dragged = event;
-      // 被拖拉节点的背景色变透明
-      event.target.style.opacity = 0.3;
+    var dragdivX; //鼠标距离dragdiv边缘x轴距离
+    var dragdivY;
+    var leftFlag = false;
+    dragdiv.addEventListener('mousedown', function (event) {
+      dragdivX = event.offsetX;
+      dragdivY = event.offsetY;
     }, false);
 
-    document.addEventListener('dragend', function (event) {
+    dragdiv.addEventListener('dragstart', function (event) {
+      // 保存被拖拉节点
+      dragged = event.target.cloneNode(true);
+      leftFlag = true;
+      // 被拖拉节点的背景色变透明
+      event.target.style.opacity = 0.5;
+    }, false);
+
+    dragdiv.addEventListener('drag', function (event) {}, false)
+
+    dragdiv.addEventListener('dragend', function (event) {
       // 被拖拉节点的背景色恢复正常
       event.target.style.opacity = '';
+      leftFlag = false;
+      // dragdiv.style.left = event.clientX - dragdivX - 8 + 'px';
+      // dragdiv.style.top = event.clientY - dragdivY - 8 + 'px';
     }, false);
 
-    document.addEventListener('dragover', function (event) {
+
+
+    drop.addEventListener('dragenter', function (event) {
+      // 目标节点的背景色变紫色
+      // 由于该事件会冒泡，所以要过滤节点
+      if (leftFlag && event.target.className === "drop") {
+        event.target.style.border = '5px dashed #000';
+        event.target.style.background = 'pink';
+      }
+    }, false);
+
+    drop.addEventListener('dragover', function (event) {
       // 防止拖拉效果被重置，允许被拖拉的节点放入目标节点
       event.preventDefault();
     }, false);
 
-    document.addEventListener('dragenter', function (event) {
-      // 目标节点的背景色变紫色
-      // 由于该事件会冒泡，所以要过滤节点
-      event.target.style.background = 'purple';
-    }, false);
-
-    document.addEventListener('dragleave', function (event) {
+    drop.addEventListener('dragleave', function (event) {
       // 目标节点的背景色恢复原样
-        event.target.style.background = '';
+      event.target.style.background = '';
+      event.target.style.border = '';
     }, false);
 
-    document.addEventListener('drop', function (event) {
+    drop.addEventListener('drop', function (event) {
       // 防止事件默认行为（比如某些元素节点上可以打开链接），
-      event.preventDefault();
-      // 恢复目标节点背景色
-      event.target.style.background = '';
-      // 将被拖拉节点插入目标节点
-      debugger;
-      dragged.clientX=event.clientX;
-      dragged.clientY=event.clientY;
-      dragged.target.parentNode.removeChild(dragged.target);
-      event.target.appendChild(dragged.target);
+      if (leftFlag && event.target.className === "drop") {
+        event.preventDefault();
+        // 恢复目标节点背景色
+        event.target.style.background = '';
+        event.target.style.border = '';
+        dragged.style.left = event.clientX - dragdivX - drag.clientWidth - 8 + 'px';
+        dragged.style.top = event.clientY - dragdivY - 8 + 'px';
+        dragged.draggable = false;
+        // 将被拖拉节点插入目标节点
+        event.target.appendChild(dragged);
+      }
     }, false);
   </script>
 </body>
