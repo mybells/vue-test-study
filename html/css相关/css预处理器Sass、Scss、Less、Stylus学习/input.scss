@@ -1,0 +1,33 @@
+$red:#f00;
+$border:solid 1px #f00;
+//sass and stylus syntax are supported too
+  /* Outside Comment */
+header {
+  padding: 20px;
+  h1 {
+    font-size: 24px;
+    _font-size: 25px;
+    *font-size: 26px;
+    -webkit-box-shadow: 0 0 0 rgba(0,0,0,0.9);
+    -ms-box-shadow: 0 0 0 rgba(0,0,0,0.9);
+    -moz-box-shadow: 0 0 0 rgba(0,0,0,0.9);
+    -o-box-shadow: 0 0 0 rgba(0,0,0,0.9);
+    box-shadow: 0 0 0 rgba(0,0,0,0.9);
+    a {
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII=) 0 0 no-repeat;
+        span {
+          color: $red;
+        }
+      }
+    }
+  }
+  img {
+    border: none;
+    &.glow {
+      border: $border;
+    }
+  }
+}
