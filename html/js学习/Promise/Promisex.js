@@ -235,3 +235,29 @@ new Promisex((resolve, reject)=>{
   return e;
 })
 
+/* reject后如果then有第二个函数则执行第二个函数，不会catch */
+new Promise((resolve, reject)=>{
+  setTimeout(() => {
+    reject(2)
+  }, 2000);
+}).then(res=>{
+  console.log('resolve')
+  return e;
+},e=>{
+  console.log('reject')//reject
+  return e;
+}).catch(e=>{
+  console.log(e)
+})
+
+/* reject后如果then没有第二个函数，则报异常进入catch */
+new Promise((resolve, reject)=>{
+  setTimeout(() => {
+    reject(2)
+  }, 2000);
+}).then(res=>{
+  console.log('resolve')
+  return 3;
+}).catch(e=>{
+  console.log(e)//2
+})
