@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .outer{
+    width: 200px;
+    height:300px;
+    overflow: hidden;
+    position: relative;
+  }
+.inner{
+  width: 200px;
+  height:300px;
+  position: absolute;
+}
+.inner1{
+  background: red;
+}
+.inner2{
+  background: green;
+}
+.inner3{
+  background: yellow;
+}
+</style>
+<body>
+  <div class="outer">
+    <div class="inner inner1" style="left:0;">1</div>
+    <div class="inner inner2" style="left:200px;">2</div>
+    <div class="inner inner3" style="left:400px;">3</div>
+  </div>
+  <script>
+    let inner1=document.querySelector('.inner1');
+    let inner2=document.querySelector('.inner2');
+    let inner3=document.querySelector('.inner3');
+    setInterval(() => {
+      inner1.style.left=parseInt(inner1.style.left)-200+'px';
+      inner2.style.left=parseInt(inner2.style.left)-200+'px';
+      inner3.style.left=parseInt(inner3.style.left)-200+'px';
+      if(inner1.style.left==="-600px"){
+        inner1.style.left='0px';
+        inner2.style.left='200px';
+        inner3.style.left='400px';
+      }
+    }, 1500);
+  </script>
+</body>
+</html>
