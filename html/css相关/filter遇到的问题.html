@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body style="filter: grayscale(1);">
+  <div style="height: 200px;background:red"></div>
+  <div style="height: 1000px;background:greenyellow">
+    <div style="height: 200px;width:200px;position: fixed;top:10px;background: yellow;">ff</div>
+  </div>
+
+  对于指定了 filter 样式且值不为 none 时，被应用该样式的元素其子元素中如果有 position 为 absolute 或 fixed 的元素，会为这些元素创建一个新的容器，使得这些绝对或固定定位的元素其定位的基准相对于这个新创建的容器。
+
+  fixed是相对于html根容器来定位的，如果在body上设置了filter则会创建一个新的定位基准，而页面滚动时将body滚动出了屏幕外，则body内所有子孙元素的fixed将产生不符合预期的效果。
+</body>
+</html>
