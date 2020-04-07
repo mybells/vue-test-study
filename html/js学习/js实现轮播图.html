@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
 <style>
-.outer{
-  width:500px;
-  height:300px;
-  overflow: hidden;
-  position: relative;
-}
-.inner{
-  position: absolute;
-  left:0;
-  height:100%;
-  display: flex;
-}
-.inner div{
-  width:500px;
-  height:100%;
-}
+  .outer {
+    width: 500px;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+  }
 
+  .inner {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    display: flex;
+  }
+
+  .inner div {
+    width: 500px;
+    height: 100%;
+  }
 </style>
+
 <body>
   <div class="outer">
     <div class="inner">
@@ -36,27 +39,56 @@
     </div>
   </div>
   <script>
-    let el=document.querySelector('.inner');
-    let current=0;
+    let el = document.querySelector('.inner');
+    let current = 0;
+    let flag = null;
+    let frame = null;
+    /* 开始移动 */
+    function move() {
+      if (current >= el.children.length) {
+        current = 1;
+        el.style.left = '0px';
+      }
+      frame = requestAnimationFrame(animate)
+    }
+    /* 移动动画 */
+    function animate() {
+      let left = parseInt(getComputedStyle(el).left);
+      if (left > current * -500) {
+        el.style.left = left - 5 + 'px';
+        frame = requestAnimationFrame(animate)
+      }
+    }
+    /* 开启定时器 */
+    function start() {
+      debugger;
+      if (flag) return;
+      flag = setInterval(() => {
+        current++;
+        move();
+      }, 3000);
+    }
 
-    function move(){
-      if(current>=el.children.length){
-        current=1;
-        el.style.left='0px';
-      }
-      requestAnimationFrame(animate)
+    function stop() {
+      clearInterval(flag) //清除定时器
+      flag = null;
     }
-    function animate(){
-      let left=parseInt(getComputedStyle(el).left);
-      if(left>current*-500){
-        el.style.left=left-5+'px';
-        requestAnimationFrame(animate)
-      }
-    }
-    setInterval(() => {
-      current++;
+    start();
+    /* 解决标签页切换导致定时器积累执行 */
+    window.onfocus = start;
+    window.onblur = stop;
+
+    /* 触摸停止动画 */
+    el.onmouseenter = function () {
+      stop();
+      cancelAnimationFrame(frame)
+    };
+    el.onmouseleave = function () {
+      frame = null;
       move();
-    }, 3000);
+      start()
+    };
   </script>
 </body>
+
 </html>
