@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+.outer{
+  width:500px;
+  height:300px;
+  overflow: hidden;
+  position: relative;
+}
+.inner{
+  position: absolute;
+  left:0;
+  height:100%;
+  display: flex;
+}
+.inner div{
+  width:500px;
+  height:100%;
+}
+
+</style>
+<body>
+  <div class="outer">
+    <div class="inner">
+      <div style="background:red">1</div>
+      <div style="background:green">2</div>
+      <div style="background:yellow">3</div>
+      <div style="background:yellowgreen">4</div>
+      <div style="background:pink">5</div>
+      <div style="background:red">1</div>
+    </div>
+  </div>
+  <script>
+    let el=document.querySelector('.inner');
+    let current=0;
+
+    function move(){
+      if(current>=el.children.length){
+        current=1;
+        el.style.left='0px';
+      }
+      requestAnimationFrame(animate)
+    }
+    function animate(){
+      let left=parseInt(getComputedStyle(el).left);
+      if(left>current*-500){
+        el.style.left=left-5+'px';
+        requestAnimationFrame(animate)
+      }
+    }
+    setInterval(() => {
+      current++;
+      move();
+    }, 3000);
+  </script>
+</body>
+</html>
