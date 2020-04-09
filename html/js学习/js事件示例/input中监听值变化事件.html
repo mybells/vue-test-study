@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>input中监听值变化事件</title>
+</head>
+<body>
+  onchange失去焦点才会触发<input type="text" onchange="change(this)">
+  keypress(有问题，回格不会触发)<input type="text" onkeypress="keypress(event)">
+  keydown(有问题，第一个字母监听不到是空的)<input type="text" onkeydown="keydown(this)">
+  input(对的)<input type="text" oninput="input(this)">
+  <script>
+    function change(e){
+      console.log('change')
+    }
+    function keypress(event){
+      console.log(event.target.value)
+      console.log('keypress')
+    }
+    function keydown(e){
+      console.log(e.value)
+      console.log('keydown')
+    }
+    function input(e){
+      console.log(e.value)
+      console.log('input')
+    }
+  </script>
+</body>
+</html>

