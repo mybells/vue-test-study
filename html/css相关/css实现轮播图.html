@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+.outer{
+  width:500px;
+  height:300px;
+  overflow: hidden;
+  position: relative;
+}
+.inner{
+  position: absolute;
+  left:0;
+  height:100%;
+  display:flex;
+  animation: slide 7.5s infinite;
+}
+@keyframes slide {
+  from{
+    left:0;
+  }
+  20%{
+    left:-500px;
+  }
+  40%{
+    left:-1000px;
+  }
+  60%{
+    left:-1500px;
+  }
+  80%{
+    left:-2000px;
+  }
+  to{
+    left:0;
+  }
+}
+.inner div{
+  width:500px;
+  height:100%;
+}
+
+</style>
+<body>
+  <div class="outer">
+    <div class="inner">
+      <div style="background:red">1</div>
+      <div style="background:green">2</div>
+      <div style="background:yellow">3</div>
+      <div style="background:yellowgreen">4</div>
+      <div style="background:pink">5</div>
+    </div>
+  </div>
+</body>
+</html>
