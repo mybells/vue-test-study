@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body style="">
+  <h2>1.垂直边距合并</h2>
+  <p>1.BFC影响BFC内部所有元素,自身不受影响</p>
+  <p>下面的黄色底部边距和绿色顶部边距margin会合并，而不是两个margin相加</p>
+  <div>
+    <div style="width:200px;height:200px;background:yellow;margin-bottom: 20px;"></div>
+    <div style="width:200px;height:200px;background:greenyellow;margin-top:30px;">
+      <div style="width:50px;height:50px;background:rgb(204, 88, 126);margin-bottom: 20px;"></div>
+      <div style="width:50px;height:50px;background:rgb(73, 106, 177);margin-top:30px;"> </div>
+    </div>
+  </div>
+
+
+  <h2>2.自适应两栏布局</h2>
+  <p>BFC的区域不会与float box重叠。(float box不在BFC内部)</p>
+  <div style="width: 100%;">
+    <div class="slide" style="float: left;width:200px;height:200px;background:rgb(211, 116, 27);"></div>
+    <div class="main" style="height:200px;background:fuchsia;overflow: hidden;">1</div>
+  </div>
+
+
+  <h2>2.清除内部浮动</h2>
+  <p>**同一个BFC中**，计算BFC的高度时，浮动元素也参与计算。一个bfc中包含一个bfc则失效</p>
+  <p>这里为什么html拥有BFC的特性, 但是下面不满足计算BFC的高度时，浮动元素也参与计算。它的高度也会坍塌?
+    因为slide设置了float:left创建了一个新的bfc和html不在同一个bfc中，就不满足条件了。
+  </p>
+  <div style="width: 400px;border:2px solid #000;">
+    <div class="slide" style="float: left;width:200px;height:200px;background:rgb(211, 116, 27);"></div>
+    <div class="main" style="height:100px;background:fuchsia;overflow: hidden;">1</div>
+  </div>
+</body>
+
+</html>
