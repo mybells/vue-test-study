@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .base {
+      height: 200px;
+      width: 200px
+    }
+
+    /*方法一： position:fixed;和position:absolute;这两种定位时，没有top/bottom时相对于父元素上下定位，没有left/right时相对于父元素左右定位，可用margin定位。*/
+    /* .level2 {
+      margin-bottom: 30px;
+    }
+
+    .popup {
+      position: absolute;
+      margin-top: 10;
+      width: 100px;
+      height: 100px;
+      background: yellow;
+      box-shadow: 6px 6px 6px 6px rgba(213, 213, 213, 0.6);
+    } */
+
+    /* 方法二： */
+    /* z-index: auto;盒子不会创建一个新的本地堆叠上下文。在当前堆叠上下文中生成的盒子的堆叠层级和父级盒子相同。相当于不写这个属性 */
+    /* .level2如果使用z-index不为auto的数值，创建一个堆叠层级为数值的本地堆叠上下文，
+       则两个input框.level2分别属于不同的堆叠上下文，表现就互不影响了。
+
+       .level2如果使用z-index为auto，则不创建一个上下文。
+       则两个input框.level2属于相同同的堆叠上下文，表现就一样了，popup就属于同一堆叠上下文可以相互作用。
+    */
+    .level2 {
+      position: relative;
+      margin-bottom: 30px;
+    }
+
+    .popup {
+      position: absolute;
+      top: 15px;
+      width: 100px;
+      height: 100px;
+      background: yellow;
+      z-index: 2;
+      box-shadow: 6px 6px 6px 6px rgba(213, 213, 213, 0.6);
+    }
+  </style>
+</head>
+
+<body style="display: flex;justify-content: space-around;flex-wrap:wrap;">
+  <div style="width: 300px;">
+    如果a和b堆叠上下文一样,如果ab是定位元素（position 属性值不是 static）就可以使用z-index比较层级,不设置z-index,堆叠上下文层级就一样。不是定位元素则z-index无效。<br><br>
+    如果ab是定位元素设置了relative，a的z-index大于b的则a在b上面显示，c也就在b之上显示（只要c不设为-1），而d受制于b，所以c也就在d上面显示。<br><br>
+
+    如果a是定位元素，b不是定位元素，d和c是定位元素设置了relative/absolute。则d和a堆叠上下文一样，可以使用z-index比较，d的z-index小于a的,不论c的index,d就在c下面，d大于a的d就在c上面，一样就后面的在前面的上面d在c上面。<br><br>
+
+    负值的z-index会添加到背面div<br>
+    <div class="base" name="a" style="background: red;position: relative;">
+      <div name="c" style="width:50px;height:300px;background: darkorange;position: absolute;left:20px;z-index: 1;"> </div>
+    </div>
+    <div class="base" name="b" style="background: yellowgreen;">2
+      <div name="d" style="width: 50px;height: 50px;background: yellow;position: relative;z-index: 2;">3</div>
+    </div>
+  </div>
+
+  <div style="width: 300px;">
+    position:fixed;和position:absolute;这两种定位时，没有top/bottom时相对于父元素上下定位，没有left/right时相对于父元素左右定位，可用margin定位。
+    <div class="base" style="background: yellowgreen;overflow: auto;">
+      <div style="width: 50px;height: 50px;background: yellow;position: fixed;margin-top: 10px;">2</div>
+      <div style="width: 50px;height: 500px;">1</div>
+    </div>
+  </div>
+
+  <div style="width: 300px;">
+    粘性定位可以被认为是相对定位和固定定位的混合。元素在跨越特定阈值前为相对定位，之后为固定定位。例如：<br />
+    #one { position: sticky; top: 10px; }<br /><br>
+    在 viewport 视口滚动到元素 top 距离小于 10px 之前，元素为相对定位。之后，元素将固定在与顶部距离 10px 的位置，直到 viewport 视口回滚到阈值以下。
+    <div class="base" style="background: yellowgreen;overflow: auto;">
+      <div style="width: 50px;height: 500px;background: burlywood;">1</div>
+      <div style="width: 50px;height: 50px;background: yellow;position: sticky;top:20px;left:10px;">3</div>
+      <div style="width: 50px;height: 500px;background: burlywood;">2</div>
+    </div>
+  </div>
+
+  <div class="level1" style="width: 300px;">
+    z-index 属性设定了一个定位元素及其后代元素或 flex 项目的 z-order。默认所有非定位元素是在一个堆叠上下文中的。如果不是定位元素z-index无效。 当定位元素之间重叠的时候， z-index 较大的元素会覆盖较小的元素在上层进行显示。<br>
+    对于一个已经定位的盒子（即其 position 属性值不是 static，这里要注意的是 CSS 把元素看作盒子），z-index 属性指定：<br>
+    1.盒子在当前堆叠上下文中的堆叠层级。<br>
+    2.盒子是否创建一个本地堆叠上下文。<br>
+    <p></p>
+    auto<br>
+    盒子不会创建一个新的本地堆叠上下文。在当前堆叠上下文中生成的盒子的堆叠层级和父级盒子相同。<br>
+    number<br>
+    integer（整型数字）是生成的盒子在当前堆叠上下文中的堆叠层级。此盒子也会创建一个堆叠层级为 0 的本地堆叠上下文。这意味着后代（元素）的 z-indexes 不与此元素外的其他元素的 z-indexes 进行对比。<br>
+    <p></p>
+
+    z-index是按照广度走的，两个level2定位元素（relative）的z-index相互影响。两个popup互相不影响，他们都受制于父级level2。
+    所以只需要两个level2堆叠上下文一样，不分别创建新的上下文，两个子定位元素popup堆叠上下文也就一样就可以用z-index相互比较了。<br>
+    就是说如果多个父级元素堆叠上下文一样，子元素堆叠上下文也就一样，就可以用z-index比较
+    <div class="level2">
+      <input class="text" type="text" value="test1" />
+      <div class="popup">test1</div>
+    </div>
+    <div class="level2">
+      <input class="text" type="text" value="test2" />
+      <div class="popup">test2</div>
+    </div>
+
+    <div style="margin-top: 120px;position: relative;">
+      显示1
+      <input type="text" value="1" style="position: absolute;left:0;z-index: 2;">
+      <input type="text" value="2" style="position: absolute;left:0;z-index: 1;">
+    </div>
+  </div>
+
+  <div style="height:1000px"></div>
+</body>
+
+</html>
