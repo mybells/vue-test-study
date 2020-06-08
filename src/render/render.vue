@@ -12,8 +12,18 @@
     },
     render(h) {
       return (
-        <div>{this.msg}</div>
+        <div>
+          <div>{this.msg}</div>
+          <el-button type="primary" onClick={this.btnc}>给父组件传参</el-button>
+        </div>
+
       )
+    },
+
+    methods:{
+      btnc() {
+        this.$emit('btnClick',this,false);
+      }
     }
   }
 </script>

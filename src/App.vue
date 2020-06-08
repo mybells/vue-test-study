@@ -42,7 +42,7 @@
     <vshow></vshow>
 
     <div class="title">11.***********使用render***********</div>
-    <render></render>
+    <render @btnClick="this.btnClick"></render>
   </div>
 </template>
 
@@ -105,6 +105,9 @@ export default {
   filters: {
   },
   methods: {
+    btnClick(event,value) {
+      console.log(event,value)
+    }
   }
 }
 </script>
