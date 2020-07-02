@@ -1,8 +1,8 @@
 <template>
   <div>
     <el-button type="primary" @click="getchild">getchild1</el-button>
-    <router-view s="sss"></router-view>
-    <!-- <router-view></router-view> -->
+    <router-view name="sss"></router-view>
+    <router-view></router-view>
   </div>
 </template>
 

@@ -23,7 +23,7 @@ export default new Router({
       path: '/father',
       component: Father,
       children: [
-        { path: '/child1', component: Child1 },
+        { path: '/child1', components: {sss:Child1} },
         { path: '/child2', component: Child2 }
       ]
     },

@@ -47,7 +47,7 @@
 </template>
 
 <script>
-// import './模块js/ES6的Module/moudle'
+import './模块js/ES6的Module/moudle'
 // import './模块js/CommonJS模块化/CommonJS'
 // import './模块js/AMD模块化/amd'
 // import './模块js/CMD模块化/cmd'

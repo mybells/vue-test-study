@@ -1,30 +1,21 @@
 Arguments: 
-  D:\Program Files\nodejs\node.exe C:\Users\suninfo\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add -D in32 is incompatible with this module.
+  /usr/local/bin/node /usr/local/bin/yarn
 
 PATH: 
-  C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;D:\Program Files\Git\cmd;D:\Program Files\nodejs\;C:\Program Files\TortoiseGit\bin;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\OpenVPN\bin;C:\Program Files\TortoiseSVN\bin;C:\Windows\System32\WindowsPowerShell\v1.0\;D:\MongoDB\Server\4.0\bin;C:\Python27;C:\Program Files\Java\jdk1.8.0_181\bin;C:\Program Files\Java\jdk1.8.0_181\jre\bin;C:\Users\suninfo\AppData\Local\Android\Sdk\platform-tools;C:\Program Files\Microsoft VS Code\bin;;C:\Users\suninfo\AppData\Roaming\npm
+  /Users/suninfo/.rvm/gems/ruby-2.6.3/bin:/Users/suninfo/.rvm/gems/ruby-2.6.3@global/bin:/Users/suninfo/.rvm/rubies/ruby-2.6.3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Users/suninfo/.rvm/gems/ruby-2.6.3/bin:/Users/suninfo/.rvm/gems/ruby-2.6.3@global/bin:/Users/suninfo/.rvm/rubies/ruby-2.6.3/bin:/Users/suninfo/.rvm/bin:/Users/suninfo/.rvm/bin
 
 Yarn version: 
-  1.16.0
+  1.22.4
 
 Node version: 
-  10.15.3
+  12.16.2
 
 Platform: 
-  win32 x64
+  darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/in32%20is%20incompatible%20with%20this%20module.: Not found
-      at Request.params.callback [as _callback] (C:\Users\suninfo\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66091:18)
-      at Request.self.callback (C:\Users\suninfo\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:129590:22)
-      at Request.emit (events.js:189:13)
-      at Request.<anonymous> (C:\Users\suninfo\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:130562:10)
-      at Request.emit (events.js:189:13)
-      at IncomingMessage.<anonymous> (C:\Users\suninfo\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:130484:12)
-      at Object.onceWrapper (events.js:277:13)
-      at IncomingMessage.emit (events.js:194:15)
-      at endReadableNT (_stream_readable.js:1125:12)
-      at process._tickCallback (internal/process/next_tick.js:63:19)
+  Error: getaddrinfo ENOTFOUND registry.yarnpkg.com
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:64:26)
 
 npm manifest: 
   {
@@ -69,7 +60,6 @@ npm manifest:
       "less": "^3.10.3",
       "less-loader": "^5.0.0",
       "postcss-loader": "^3.0.0",
-      "stylelint-webpack-plugin": "^0.10.5",
       "stylus": "^0.54.5",
       "stylus-loader": "^3.0.2",
       "url-loader": "^2.1.0",
@@ -585,11 +575,6 @@ Lockfile:
     version "0.3.2"
     resolved "https://registry.npm.taobao.org/array-unique/download/array-unique-0.3.2.tgz#a894b75d4bc4f6cd679ef3244a9fd8f46ae2d428"
     integrity sha1-qJS3XUvE9s1nnvMkSp/Y9Gri1Cg=
-  
-  arrify@^1.0.1:
-    version "1.0.1"
-    resolved "https://registry.yarnpkg.com/arrify/-/arrify-1.0.1.tgz#898508da2226f380df904728456849c1501a4b0d"
-    integrity sha1-iYUI2iIm84DfkEcoRWhJwVAaSw0=
   
   asap@~2.0.3:
     version "2.0.6"
@@ -4362,7 +4347,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/methods/-/methods-1.1.2.tgz#5529a4d67654134edcc5266656835b0f851afcee"
     integrity sha1-VSmk1nZUE07cxSZmVoNbD4Ua/O4=
   
-  micromatch@^3.0.4, micromatch@^3.1.10, micromatch@^3.1.4, micromatch@^3.1.8:
+  micromatch@^3.0.4, micromatch@^3.1.10, micromatch@^3.1.4:
     version "3.1.10"
     resolved "https://registry.npm.taobao.org/micromatch/download/micromatch-3.1.10.tgz#70859bc95c9840952f359a068a3fc49f9ecfac23"
     integrity sha1-cIWbyVyYQJUvNZoGij/En57PrCM=
@@ -5418,11 +5403,6 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-2.1.1.tgz#60e5a5fd64a7f8bfa4d2ab2ed6fdf4c85bad154e"
     integrity sha512-w7fLxIRCRT7U8Qu53jQnJyPkYZIaR4n5151KMfcJlO/A9397Wxb1amJvROTK6TOnp7PfoAmg/qXiNHI+08jRfA==
   
-  ramda@^0.25.0:
-    version "0.25.0"
-    resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.25.0.tgz#8fdf68231cffa90bc2f9460390a0cb74a29b29a9"
-    integrity sha512-GXpfrYVPwx3K7RQ6aYT8KPS8XViSXUVJT1ONhoKPE9VAleW42YE+U+8VEyGWt41EnEQW7gwecYJriTI0pKoecQ==
-  
   randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5:
     version "2.1.0"
     resolved "https://registry.npm.taobao.org/randombytes/download/randombytes-2.1.0.tgz#df6f84372f0270dc65cdf6291349ab7a473d4f2a"
@@ -6305,16 +6285,6 @@ Lockfile:
     version "2.0.1"
     resolved "https://registry.npm.taobao.org/strip-json-comments/download/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
     integrity sha1-PFMZQukIwml8DsNEhYwobHygpgo=
-  
-  stylelint-webpack-plugin@^0.10.5:
-    version "0.10.5"
-    resolved "https://registry.yarnpkg.com/stylelint-webpack-plugin/-/stylelint-webpack-plugin-0.10.5.tgz#0b6e0d373ff5e03baa8197ebe0f2625981bd266b"
-    integrity sha512-jtYx3aJ2qDMvBMswe5NRPTO7kJgAKafc6GilAkWDp/ewoAmnoxA6TsYMnIPtLECRLwXevaCPvlh2JEUMGZCoUQ==
-    dependencies:
-      arrify "^1.0.1"
-      micromatch "^3.1.8"
-      object-assign "^4.1.0"
-      ramda "^0.25.0"
   
   stylus-loader@^3.0.2:
     version "3.0.2"

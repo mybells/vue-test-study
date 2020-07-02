@@ -5,7 +5,8 @@ export var c = 'c';
 
 var d = 'd';
 var e = 'e';
-export { d, e }
+var obj = {obx:1};
+export { d, e, obj }
 export { d as s1, e as s2 }
 
 export function f() { console.log('f') }

@@ -5,7 +5,7 @@ import y from './moudle2'
 import { d } from './moudle2'
 // d
 
-import { s2 } from './moudle2'
+import { s2, obj } from './moudle2'
 // e
 // import {s2} from './moudle2'//报错，已导入的不能够再导入
 
@@ -18,7 +18,8 @@ import { s1 as s4 } from './moudle2'
 
 import * as allexport from './moudle2'// 等同与 import {default as y} from './moudle2'
 // x=666//报错，x应该是静态分析的，不允许运行时改变
-
+obj.c = 123;
+obj.obx = 123;
 console.log(x, y)
 console.log(d)
 console.log(s2)
@@ -33,6 +34,7 @@ console.log(allexport)
 //   default: "b",
 //   e: "e",
 //   f:  f(),
+//   obj: {c:123, obx:123},
 //   s1: "d",
 //   s2: "e",
 //   Symbol(Symbol.toStringTag): "Module",
