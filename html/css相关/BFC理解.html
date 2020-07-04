@@ -9,13 +9,15 @@
 
 <body style="">
   <h2>1.垂直边距合并</h2>
-  <p>1.BFC影响BFC内部所有元素,自身不受影响</p>
+  <p>1.BFC影响BFC内部所有<b>子元素</b>(不是后代所有元素，只是一代子元素),自身不受影响</p>
   <p>下面的黄色底部边距和绿色顶部边距margin会合并，而不是两个margin相加</p>
   <div>
     <div style="width:200px;height:200px;background:yellow;margin-bottom: 20px;"></div>
     <div style="width:200px;height:200px;background:greenyellow;margin-top:30px;">
       <div style="width:50px;height:50px;background:rgb(204, 88, 126);margin-bottom: 20px;"></div>
-      <div style="width:50px;height:50px;background:rgb(73, 106, 177);margin-top:30px;"> </div>
+      <div style="overflow: auto;">
+        <div style="width:50px;height:50px;background:rgb(73, 106, 177);margin-top:30px;"> </div>
+      </div>
     </div>
   </div>
 
@@ -29,13 +31,15 @@
 
 
   <h2>2.清除内部浮动</h2>
-  <p>**同一个BFC中**，计算BFC的高度时，浮动元素也参与计算。一个bfc中包含一个bfc则失效</p>
-  <p>这里为什么html拥有BFC的特性, 但是下面不满足计算BFC的高度时，浮动元素也参与计算。它的高度也会坍塌?
-    因为slide设置了float:left创建了一个新的bfc和html不在同一个bfc中，就不满足条件了。
-  </p>
-  <div style="width: 400px;border:2px solid #000;">
-    <div class="slide" style="float: left;width:200px;height:200px;background:rgb(211, 116, 27);"></div>
-    <div class="main" style="height:100px;background:fuchsia;overflow: hidden;">1</div>
+  <p>同一个BFC中，计算BFC的高度时，浮动元素也参与计算。</p>
+  <p>这里为什么html拥有BFC的特性, 但是下面的div不满足计算BFC的高度时，浮动元素也参与计算。它的高度也会坍塌? </p>
+  <p>因为html拥有BFC特性，所以计算高度时，html标签的高度时计算浮动元素高度的。内部要计算高度的那个div因为没设置BFC,所以不计算浮动元素高度</p>
+ 
+  <div style="border:2px solid red;overflow: hidden;">
+    <div style="width: 400px;border:2px solid #000;">
+      <div class="slide" style="float: left;width:200px;height:200px;background:rgb(211, 116, 27);"></div>
+      <div class="main" style="height:100px;background:fuchsia;overflow: hidden;">1</div>
+    </div>
   </div>
 </body>
 

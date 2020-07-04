@@ -1,5 +1,5 @@
 ## Sass安装
-sass基于Ruby语言开发而成，因此安装sass前需要安装Ruby。（注:mac下自带Ruby无需在安装Ruby!）
+sass基于Ruby语言开发而成，因此安装sass前需要安装Ruby。（注:mac下自带Ruby无需安装Ruby!）
 
 window下安装SASS首先需要安装Ruby，先从官网[下载Ruby](https://rubyinstaller.org/downloads/)并安装。安装过程中请注意勾选Add Ruby executables to your PATH添加到系统环境变量。
 1. 安装Ruby
