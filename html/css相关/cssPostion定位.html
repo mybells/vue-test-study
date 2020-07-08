@@ -61,7 +61,7 @@
   <div class="outer">
     position:fixed;和position:absolute;这两种定位时，没有top/bottom时相对于父元素上下定位，没有left/right时相对于父元素左右定位，可用margin定位。<br>
     如果有top/bottom：postion:fixed;相对于浏览器视口上下定位。如果有left/right：fixed相对于浏览器视口左右定位。<br>
-    如果有top/bottom：postion:absolute;相对于最近的非 static 祖先元素上下定位(啥都不写也是static默认定位)。如果有left/right：fixed相对于最近的非 static 祖先元素左右定位。<br>
+    如果有top/bottom：postion:absolute;相对于最近的非 static 祖先元素上下定位(啥都不写也是static默认定位)。如果有left/right：absolute相对于最近的非 static 祖先元素左右定位。<br>
     <div class="box" id="one">此元素相对于.outer固定fixed定位</div>
     <div class="box" style="position: absolute;margin-left:90px;background: yellowgreen;">
       此元素相对于.outer固定absolute定位,此时有left/right则相对html左右定位。

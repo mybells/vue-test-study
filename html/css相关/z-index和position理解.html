@@ -102,11 +102,11 @@
     就是说如果多个父级元素堆叠上下文一样，子元素堆叠上下文也就一样，就可以用z-index比较
     <div class="level2">
       <input class="text" type="text" value="test1" />
-      <div class="popup">test1</div>
+      <div class="popup" style="z-index: 2;">test1</div>
     </div>
     <div class="level2">
       <input class="text" type="text" value="test2" />
-      <div class="popup">test2</div>
+      <div class="popup" style="z-index: 3;">test2</div>
     </div>
 
     <div style="margin-top: 120px;position: relative;">
