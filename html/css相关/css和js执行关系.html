@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+</head>
+<body>
+  <div id="id" style="color: red;">123</div>
+  <!-- <style>
+    #id{
+      color:#ccc !important;
+      background: brown;
+    }
+  </style> -->
+  <script>
+    //el.style只能获取内联样式
+    let el=document.querySelector('#id');
+    console.log(getComputedStyle(el).color);
+    console.log(getComputedStyle(el).background);
+    setTimeout(()=>{
+      console.log(getComputedStyle(el).color);
+      console.log(getComputedStyle(el).background);
+    },1000)
+  </script>
+  <style>
+    #id{
+      color:#ccc !important;
+      background: brown;
+    }
+  </style>
+  style在script之前：getComputedStyle(el)获取的是合并css规则树之后的样式#ccc和brown，不会阻塞render树的生成。</br>
+  style在script之后：getComputedStyle(el)获取的是合并css规则树之前的样式color:rgb(255, 0, 0)和background:rgba(0, 0, 0, 0)，会阻塞render树的生成。
+  
+  结论：</br>
+  1. css会阻塞渲染树的生成。</br>
+  2. css不会阻塞js执行。</br>
+  3. js会阻塞DOM解析。</br>
+</body>
+</html>
