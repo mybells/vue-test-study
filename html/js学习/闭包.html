@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>闭包</title>
+</head>
+<body>
+  闭包return只能是函数，不能是对象。闭包和原型链无关
+  <script>
+    function a(){
+      let a=1;
+      var b=2;
+      let c={d:4};
+      // return {
+      //   t:1
+      // }
+      
+      return function(){
+        console.log(a,b,c);
+      }
+    }
+    var temp=a();
+    console.log(temp);
+  </script>
+</body>
+</html>

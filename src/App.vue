@@ -43,6 +43,9 @@
 
     <div class="title">11.***********使用render***********</div>
     <render @btnClick="this.btnClick"></render>
+    
+    <div class="title">12.***********diff***********</div>
+    <diff></diff>
   </div>
 </template>
 
@@ -65,6 +68,7 @@ import vshow from './other/vshow.vue'
 import importjs from './importjstest/importjstest.vue'
 import importjs2 from './importjstest/importjs2.vue'
 import render from './render/render.vue'
+import diff from './other/diff.vue'
 export default {
   name: 'App',
   components: {
@@ -80,7 +84,8 @@ export default {
     importjs,
     importjs2,
     vshow,
-    render
+    render,
+    diff
   },
   data() {
     return {
