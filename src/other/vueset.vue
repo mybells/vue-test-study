@@ -28,7 +28,7 @@ export default {
   methods: {
     change() {
       this.a[0] = 4;//不是响应的
-      // this.a[1].b = 4;//响应的，这个不知道啥原因只要改变就会全部$forceUpdate
+      // this.a[1].b = 4;//响应的，因为是对象，这个不知道啥原因只要改变就会全部$forceUpdate
 
       this.form.x = "xchange";//不是响应的
       this.form.y = "ychange";//不是响应的
