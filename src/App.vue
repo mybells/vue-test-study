@@ -69,6 +69,8 @@ import importjs from './importjstest/importjstest.vue'
 import importjs2 from './importjstest/importjs2.vue'
 import render from './render/render.vue'
 import diff from './other/diff.vue'
+import ss from './sss.json'
+
 export default {
   name: 'App',
   components: {
@@ -93,6 +95,13 @@ export default {
     }
   },
   created() {
+    console.log(ss)
+    var t = require('./sss.json');
+    import('./sss.json').then(res=>{
+      console.log(res)
+    })
+    
+    
     console.log(process.env.NODE_ENV);
     this.list.map(function (item) {
       console.log(this)
