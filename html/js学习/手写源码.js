@@ -291,7 +291,7 @@ function selectSort(arr) {
 function insertSort(arr) {
   for (let i = 1;i < arr.length;i++) {
     let index = i;
-    while (index >= 0 && arr[index - 1] > arr[index]) {
+    while (index > 0 && arr[index - 1] > arr[index]) {
       [arr[index - 1],arr[index]] = [arr[index],arr[index - 1]];
       index--;
     }
@@ -345,9 +345,6 @@ function quickSort(arr) {
 
 var arr = [8,4,5,7,1,4,6,2];
 function quickSortx(arr) {
-  if (arr.length < 2) {
-    return arr;
-  }
   let stack = [0,arr.length - 1];
   let i,j;
   while (stack.length) {
