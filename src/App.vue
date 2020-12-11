@@ -46,6 +46,9 @@
     
     <div class="title">12.***********diff***********</div>
     <diff></diff>
+    
+    <div class="title">13.***********computed的依赖更新***********</div>
+    <computed></computed>
   </div>
 </template>
 
@@ -69,7 +72,8 @@ import importjs from './importjstest/importjstest.vue'
 import importjs2 from './importjstest/importjs2.vue'
 import render from './render/render.vue'
 import diff from './other/diff.vue'
-import ss from './sss.json'
+import computed from './computed/index.vue'
+import ss from './other/sss.json'
 
 export default {
   name: 'App',
@@ -87,7 +91,8 @@ export default {
     importjs2,
     vshow,
     render,
-    diff
+    diff,
+    computed
   },
   data() {
     return {
@@ -96,8 +101,9 @@ export default {
   },
   created() {
     console.log(ss)
-    var t = require('./sss.json');
-    import('./sss.json').then(res=>{
+    var t = require('./other/sss.json');
+    console.log(t)
+    import('./other/sss.json').then(res=>{
       console.log(res)
     })
     

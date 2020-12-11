@@ -9,7 +9,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
 Vue.use(mybells);
 
-Vue.config.productionTip = false;
+Vue.config.productionTip = false
 new Vue({
   router,
   store,
