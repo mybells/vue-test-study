@@ -49,6 +49,13 @@
     
     <div class="title">13.***********computed的依赖更新***********</div>
     <computed></computed>
+    
+    <div class="title">14.***********全局注册的组件***********</div>
+    <aaa></aaa>
+    <bbb></bbb>
+    
+    <div class="title">15.***********挂载的组件***********</div>
+    <load-component></load-component>
   </div>
 </template>
 
@@ -74,6 +81,7 @@ import render from './render/render.vue'
 import diff from './other/diff.vue'
 import computed from './computed/index.vue'
 import ss from './other/sss.json'
+import LoadComponent from './other/loadComponent.vue';
 
 export default {
   name: 'App',
@@ -92,7 +100,8 @@ export default {
     vshow,
     render,
     diff,
-    computed
+    computed,
+    LoadComponent
   },
   data() {
     return {
