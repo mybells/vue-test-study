@@ -47,6 +47,22 @@
       // 实例等同于this，可以直接使用$mount挂载到id节点上，
       // components对象中可以使用对象和函数，函数=Vue.extend(对象)
       // 实例=new 函数();
+      
+      
+      
+/*       var MyComponent = Vue.extend({
+        template: '<div>Hello!</div>'
+      })
+
+      // 创建并挂载到 #app (会替换 #app)
+      new MyComponent().$mount('#app')
+
+      // 同上
+      new MyComponent({ el: '#app' })
+
+      // 或者，在文档之外渲染并且随后挂载
+      var component = new MyComponent().$mount()
+      document.getElementById('app').appendChild(component.$el) */
     }
   }
 </script>
