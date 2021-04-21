@@ -25,29 +25,29 @@
     <div class="title">7.***********npm publish***********</div>
     <npm-publish></npm-publish>
 
-    <div class="title">7.***********vueloder自定义块***********</div>
+    <div class="title">8.***********vueloder自定义块***********</div>
     <ComponentA></ComponentA>
 
-    <div class="title">8.***********$set***********</div>
+    <div class="title">9.***********$set***********</div>
     <vueSet></vueSet>
 
-    <div class="title">8.***********setTimeout,push,setImmediate,requestanimationframe***********</div>
+    <div class="title">10.***********setTimeout,push,setImmediate,requestanimationframe***********</div>
     <moreData></moreData>
 
-    <div class="title">9.***********在不同vue文件中import同一个js的影响***********</div>
+    <div class="title">11.***********在不同vue文件中import同一个js的影响***********</div>
     <importjs></importjs>
     <importjs2></importjs2>
 
-    <div class="title">10.***********v-show是否缓存(会缓存)***********</div>
+    <div class="title">12.***********v-show是否缓存(会缓存)***********</div>
     <vshow></vshow>
 
-    <div class="title">11.***********使用render***********</div>
+    <div class="title">13.***********使用render***********</div>
     <render @btnClick="this.btnClick"></render>
     
-    <div class="title">12.***********diff***********</div>
+    <div class="title">14.***********diff***********</div>
     <diff></diff>
     
-    <div class="title">13.***********computed的依赖更新***********</div>
+    <div class="title">15.***********computed的依赖更新***********</div>
     <computed></computed>
   </div>
 </template>

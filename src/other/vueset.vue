@@ -3,15 +3,22 @@
     {{obj}}
     <el-button type="primary" @click="change">change</el-button>
     <el-button type="primary" @click="change2">forceUpdate</el-button>
+    <el-button type="primary" @click="change3">$setaddz</el-button>
     {{a}}
     <div>{{form.x}}</div>
     <div>{{form.y}}</div>
+    <div>vuesetchildren</div>
+    <vuesetchildren :form="form" :formy="form.y" :formz="form.z"></vuesetchildren>
   </div>
 
 </template>
 
 <script>
+import vuesetchildren from './vuesetchildren.vue';
 export default {
+  components: {
+    vuesetchildren
+  },
   data() {
     return {
       form:{},
@@ -37,6 +44,9 @@ export default {
     },
     change2() {
       this.$forceUpdate()
+    },
+    change3() {
+      this.$set(this.form, 'z', 'zchange');
     }
   },
 }
