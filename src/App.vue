@@ -56,6 +56,9 @@
     
     <div class="title">15.***********挂载的组件***********</div>
     <load-component></load-component>
+    
+    <div class="title">16.***********lodash的组件***********</div>
+    <lodash></lodash>
   </div>
 </template>
 
@@ -82,6 +85,7 @@ import diff from './other/diff.vue'
 import computed from './computed/index.vue'
 import ss from './other/sss.json'
 import LoadComponent from './other/loadComponent.vue';
+import lodash from './lodash/lodash.vue';
 
 export default {
   name: 'App',
@@ -101,7 +105,8 @@ export default {
     render,
     diff,
     computed,
-    LoadComponent
+    LoadComponent,
+    lodash
   },
   data() {
     return {
